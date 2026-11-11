@@ -133,3 +133,65 @@ resetMobileDropdowns();
 const navCloseBtn = document.querySelector(".nav-close-btn");
 
 navCloseBtn?.addEventListener("click", closeDrawer);
+
+// Let card surfaces follow the destination of their existing primary link.
+const cardLinkSelector = [
+    "div[class*='card']",
+    "article[class*='card']",
+    "li[class*='card']",
+    "figure[class*='card']",
+    ".roadcard",
+    ".education_exprience",
+    ".dltComponent",
+    ".one-place",
+    ".portfolioGrid figure",
+    ".portfolioGrid2 figure"
+].join(",");
+
+const cardLinkMap = new WeakMap();
+
+document.querySelectorAll(cardLinkSelector).forEach((card) => {
+    if (card.matches(".flip-card, .template_card, form, .offcanvas") ||
+        card.querySelector("form")) return;
+
+    const links = Array.from(card.querySelectorAll("a[href]")).filter((link) => {
+        const href = link.getAttribute("href")?.trim();
+        return href &&
+            href !== "#" &&
+            !/^(javascript:|mailto:|tel:)/i.test(href);
+    });
+
+    if (!links.length) return;
+
+    const primaryLink = links.find((link) =>
+        link.matches(".btnPro, .btnPro2, .stretched-link")
+    ) || links[0];
+
+    cardLinkMap.set(card, primaryLink);
+    card.classList.add("is-card-link");
+    card.style.cursor = "pointer";
+});
+
+document.addEventListener("click", (event) => {
+    if (event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey) return;
+
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target ||
+        target.closest(".flip-card, .template_card") ||
+        target.closest("a, button, input, select, textarea, label, summary, [role='button'], [data-bs-toggle], [data-bs-dismiss]")) return;
+
+    let card = target;
+    while (card && card !== document) {
+        const link = cardLinkMap.get(card);
+        if (link) {
+            link.click();
+            return;
+        }
+        card = card.parentElement;
+    }
+});

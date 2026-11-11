@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap');
 
 :root {
-    --primary: #008522;
+    --primary: #0D1B2A;
     --pink: #E30086;
     --secondary: #DE003E;
     --light-gray: #f7f3eb;
@@ -9,12 +9,12 @@
     --white: #ffffff;
     --black: #101010;
     /* ---------------------------- */
-    --royal-blue: #008522;
+    --royal-blue: #0D1B2A;
     --soft-magenta: #E30086;
     --slate-gray: #303840;
     --bright-pink: #E30086;
     --navy-blue: #0D1B2A;
-    --sky-blue: #008522;
+    --sky-blue: #0D1B2A;
     --mask-opacity: 0.5;
 }
 
@@ -284,7 +284,7 @@ General Stylesheet
 }
 
 .titleEffect {
-    background: linear-gradient(to right, #008522 20%, #E30086 40%, #E30086 60%, #000000 80%);
+    background: linear-gradient(to right, #0D1B2A 20%, #E30086 40%, #E30086 60%, #000000 80%);
     background-size: 200% auto;
     color: #000;
     background-clip: text;
@@ -752,7 +752,7 @@ Banner
 }
 
 .bannerContent-38 h1 span {
-    color: var(--sky-blue);
+    color: var(--pink);
 }
 
 .bannerContent-38 h3 {
@@ -3051,8 +3051,8 @@ Inner Pages
     transform: translateX(-65%) translateY(-15px); 
     padding: 6px 8px;
     border-radius: 999px;
-    background: #16a34a;
-    color: #042b16;
+    background: #0D1B2A;
+    color: #ffffff;
     font-weight: 700;
     transition: all .18s;
     opacity: 0;
@@ -3206,7 +3206,7 @@ Inner Pages
     left: 0;
     width: 6px;
     height: 6px;
-    background: #008522;
+    background: #0D1B2A;
     border-radius: 50%;
 }
 
@@ -5302,4 +5302,36 @@ Inner Pages
 
 @media (max-width: 350px) {
     .headerMenu a{font-size: 14px;}
+}
+
+/* Expandable solution cards */
+.dwp-solution-list ul li {
+    z-index: 0;
+    transition:
+        width 700ms cubic-bezier(0.11, 0.16, 0.43, 0.86),
+        transform 300ms ease,
+        box-shadow 300ms ease;
+    will-change: width, transform;
+}
+
+.dwp-solution-list ul li:hover,
+.dwp-solution-list ul li:focus-within {
+    z-index: 2;
+    transform: translateY(-7px);
+    box-shadow: 0 14px 30px rgba(16, 16, 16, 0.2);
+}
+
+@media (max-width: 1024px) {
+    .dwp-solution-list ul li:hover,
+    .dwp-solution-list ul li:focus-within {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dwp-solution-list ul li {
+        transition: none;
+        will-change: auto;
+    }
 }

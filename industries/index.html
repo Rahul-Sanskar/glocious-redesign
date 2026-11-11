@@ -81,6 +81,150 @@
             -webkit-text-fill-color: black !important;
             background-image: none;
         }
+
+        /* ============ Industries page ============ */
+        .industryLead {
+            max-width: 780px;
+        }
+
+        /* Industry image cards (extends .card_industry) */
+        .card_industry {
+            border-radius: 1.25rem;
+            box-shadow: 0 10px 30px rgba(25, 29, 58, .08);
+        }
+
+        .card_industry img {
+            aspect-ratio: 4 / 3;
+        }
+
+        .card_industry .content {
+            padding: 1.25rem;
+        }
+
+        .card_industry .content span {
+            font-weight: 600;
+            letter-spacing: .2px;
+        }
+
+        .card_industry .content ul li {
+            font-size: .9rem;
+            opacity: .9;
+        }
+
+        .card_industry .content a {
+            -webkit-text-fill-color: #fff;
+            background-image: none;
+            font-weight: 600;
+            font-size: .95rem;
+        }
+
+        .card_industry .content a:hover {
+            -webkit-text-fill-color: #fff;
+            opacity: .7;
+        }
+
+        .card_industry .content a i {
+            transition: transform .3s ease;
+            display: inline-block;
+        }
+
+        .card_industry .content a:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Also-serving chips */
+        .chipLabel {
+            font-size: .85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--slate-gray);
+            opacity: .7;
+        }
+
+        .industry-chips {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .6rem;
+            justify-content: center;
+        }
+
+        .industry-chips li {
+            padding: .45rem 1.1rem;
+            border-radius: 5rem;
+            border: 1px solid rgba(13, 27, 42, .22);
+            background: rgba(13, 27, 42, .05);
+            font-size: .9rem;
+            color: var(--slate-gray);
+            transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+        }
+
+        .industry-chips li:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* Stats band */
+        .industryStats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .industryStats .statBox {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1.75rem 1rem;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(25, 29, 58, .06);
+            transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s ease;
+        }
+
+        .industryStats .statBox:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 36px rgba(25, 29, 58, .12);
+        }
+
+        .industryStats .statBox .counting {
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--primary);
+        }
+
+        .industryStats .statBox p {
+            margin: .35rem 0 0;
+            font-size: .95rem;
+            color: var(--slate-gray);
+        }
+
+        .bg-soft {
+            background: linear-gradient(180deg, #fff 0%, #f7fbf8 100%);
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .8s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .reveal.is-in {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
     </style>
 </head>
 
@@ -165,181 +309,241 @@
     <section class="sectionGap">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-10 col-xl-9 text-center mb-4">
-                    <h2 class="fw-bold mb-3">Industries</h2>
-                    <p>Bulk SMS, or sending a large number of text messages to a targeted audience simultaneously, offers several benefits across various industries. Let's explore how bulk SMS can be advantageous in the following sectors:</p>
+                <div class="col-12 col-lg-9 text-center mb-5 reveal">
+                    <h2 class="fw-bold mb-3">Solutions Built Around <span class="titleEffect">Your Industry</span></h2>
+                    <p class="industryLead mx-auto mb-4">Every industry communicates differently. Glocious delivers bulk SMS, WhatsApp, voice, IVR, e-mail and digital marketing tuned to how your customers actually engage — from alert to action.</p>
                     <a href="https://glocious.com/final-pdf1.pdf" target="_blank" class="btnPro">Download Brochure <i class="ri-arrow-right-long-line"></i></a>
                 </div>
             </div>
-            <div class="row g-4">
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Real Estate</h3>
-                        <p>Bulk SMS can be beneficial for the real estate industry by enabling efficient communication with potential buyers and investors. It allows real estate agents to send property listings, updates on new projects, and promotional offers directly to interested individuals, increasing the chances of lead conversion and improving customer engagement.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Promoting new property listings and offers to potential buyers.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Sending alerts about open houses, property inspections, or upcoming real estate events.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Sharing important updates on project developments and construction progress.</p>
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-12 col-sm-6 col-lg-4 reveal">
+                    <article class="card_industry">
+                        <img src="../assets/images/banking_b.webp" alt="Banking and financial services messaging solutions" title="Banking &amp; Financial Services" loading="lazy">
+                        <div class="content">
+                            <span>Banking &amp; Financial Services</span>
+                            <p>Secure, real-time alerts for transactions, payments and account activity.</p>
+                            <ul>
+                                <li>Transaction &amp; balance alerts</li>
+                                <li>Fraud-prevention OTP messaging</li>
+                                <li>Payment reminder campaigns</li>
+                            </ul>
+                            <a href="../bulk-sms-service-provider/index.html">Explore solutions <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 reveal">
+                    <article class="card_industry">
+                        <img src="../assets/images/healthcare_b.webp" alt="Healthcare and wellness patient communication solutions" title="Healthcare &amp; Wellness" loading="lazy">
+                        <div class="content">
+                            <span>Healthcare &amp; Wellness</span>
+                            <p>Keep patients informed and reduce no-shows with timely reminders.</p>
+                            <ul>
+                                <li>Appointment &amp; follow-up reminders</li>
+                                <li>Medication and health-tip alerts</li>
+                                <li>Patient feedback surveys</li>
+                            </ul>
+                            <a href="../interactive-voice-response/index.html">Explore solutions <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 reveal">
+                    <article class="card_industry">
+                        <img src="../assets/images/education_b.webp" alt="Education and campus notification solutions" title="Education" loading="lazy">
+                        <div class="content">
+                            <span>Education</span>
+                            <p>Connect institutions, students and parents on one channel.</p>
+                            <ul>
+                                <li>Admission &amp; exam schedule alerts</li>
+                                <li>Parent–teacher communication</li>
+                                <li>Campus emergency notices</li>
+                            </ul>
+                            <a href="../voice-call-solution/index.html">Explore solutions <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 reveal">
+                    <article class="card_industry">
+                        <img src="../assets/images/ecommerce_b.webp" alt="Ecommerce and retail order communication solutions" title="E-commerce &amp; Retail" loading="lazy">
+                        <div class="content">
+                            <span>E-commerce &amp; Retail</span>
+                            <p>Drive conversions from cart to doorstep with every update.</p>
+                            <ul>
+                                <li>Order &amp; delivery notifications</li>
+                                <li>Flash-sale and offer broadcasts</li>
+                                <li>Cart-abandonment reminders</li>
+                            </ul>
+                            <a href="../whatsapp-marketing/index.html">Explore solutions <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 reveal">
+                    <article class="card_industry">
+                        <img src="../assets/images/real_estate_b.webp" alt="Real estate lead and site visit communication solutions" title="Real Estate" loading="lazy">
+                        <div class="content">
+                            <span>Real Estate</span>
+                            <p>Turn property enquiries into site visits and closures.</p>
+                            <ul>
+                                <li>New listing &amp; project updates</li>
+                                <li>Site-visit and open-house alerts</li>
+                                <li>Lead nurturing campaigns</li>
+                            </ul>
+                            <a href="../digital-marketing/index.html">Explore solutions <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 reveal">
+                    <article class="card_industry">
+                        <img src="../assets/images/government_b.webp" alt="Government and public utility citizen communication solutions" title="Government &amp; Public Utilities" loading="lazy">
+                        <div class="content">
+                            <span>Government &amp; Public Utilities</span>
+                            <p>Reach citizens instantly with service and safety information.</p>
+                            <ul>
+                                <li>Emergency &amp; public-safety alerts</li>
+                                <li>Service outage notifications</li>
+                                <li>Citizen engagement &amp; feedback</li>
+                            </ul>
+                            <a href="../bulk-sms-service-provider/index.html">Explore solutions <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 reveal">
+                    <article class="card_industry">
+                        <img src="../assets/images/travel_b.webp" alt="Travel and hospitality booking communication solutions" title="Travel &amp; Hospitality" loading="lazy">
+                        <div class="content">
+                            <span>Travel &amp; Hospitality</span>
+                            <p>Keep travellers updated from booking to boarding.</p>
+                            <ul>
+                                <li>Booking confirmations &amp; itineraries</li>
+                                <li>Schedule and gate updates</li>
+                                <li>Post-trip review requests</li>
+                            </ul>
+                            <a href="../email-marketing/index.html">Explore solutions <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 reveal">
+                    <article class="card_industry">
+                        <img src="../assets/images/automobile_b.webp" alt="Automobile dealership and service communication solutions" title="Automobile" loading="lazy">
+                        <div class="content">
+                            <span>Automobile</span>
+                            <p>From test drives to service reminders, stay on the road with customers.</p>
+                            <ul>
+                                <li>Service &amp; insurance renewals</li>
+                                <li>New model and offer launches</li>
+                                <li>Test-drive scheduling</li>
+                            </ul>
+                            <a href="../voice-call-solution/index.html">Explore solutions <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Also Serving -->
+    <section class="sectionGap pt-0">
+        <div class="container">
+            <div class="text-center mb-4 reveal">
+                <small class="chipLabel d-block mb-2">Also Serving</small>
+                <h2 class="fw-bold mb-2">Wherever <span class="titleEffect">Messages Matter</span></h2>
+                <p class="industryLead mx-auto">From FMCG to public utilities, teams across every sector rely on Glocious to reach people at the right moment.</p>
+            </div>
+            <ul class="industry-chips reveal">
+                <li>FMCG</li>
+                <li>Logistics &amp; Supply Chain</li>
+                <li>Media &amp; Entertainment</li>
+                <li>Advertising &amp; Marketing</li>
+                <li>Event Management</li>
+                <li>Health &amp; Beauty</li>
+                <li>Restaurants &amp; Takeaways</li>
+                <li>NGOs &amp; Community Groups</li>
+                <li>Retail Chains</li>
+                <li>Manufacturing</li>
+                <li>IT &amp; SaaS</li>
+                <li>Pharma &amp; Diagnostics</li>
+                <li>Insurance</li>
+                <li>EdTech</li>
+                <li>D2C Brands</li>
+                <li>Travel Agencies</li>
+                <li>Political Campaigns</li>
+                <li>Real Estate Developers</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="sectionGap bg-soft">
+        <div class="container">
+            <div class="industryStats reveal">
+                <div class="statBox"><div class="counting" data-count="12">0</div><p>Years of Experience</p></div>
+                <div class="statBox"><div class="counting" data-count="1565">0</div><p>Projects Delivered</p></div>
+                <div class="statBox"><div class="counting" data-count="265">0</div><p>Active Clients</p></div>
+                <div class="statBox"><div class="counting" data-count="15000">0</div><p>Companies Served</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="sectionGap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 reveal">
+                    <div class="logoPanel">
+                        <h4 class="mb-2 text-center">Trusted By Thousands Of Businesses</h4>
+                        <p class="text-center mb-4">More than 15,000 companies trust and choose Glocious</p>
+                        <div class="logo-slider">
+                            <div class="slide-marq"><img src="../assets/images/companies/eci.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/karuna.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/keventer.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/iiser.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/rb.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/ifb.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/railway.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/fortis.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/iris.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/merlin.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/ssjalan.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/rupa.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/piceeducare.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/skipper.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/msme.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/pathfinder.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/pathway.webp" alt="Glocious client logo" title="Glocious client"></div>
+                            <div class="slide-marq"><img src="../assets/images/companies/ori-plast.webp" alt="Glocious client logo" title="Glocious client"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Healthcare</h3>
-                        <p>In the healthcare industry, bulk SMS can be utilized to send appointment reminders, medication alerts, and health tips to patients. It facilitates effective patient communication, reduces no-shows, and enhances medication adherence. Moreover, it can be used for emergency alerts, informing patients about health campaigns, and disseminating public health information.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Appointment reminders to patients, reducing no-shows and improving scheduling efficiency.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Sending health tips, wellness reminders, or medication alerts.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Conducting patient surveys and collecting feedback for service improvement.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">FMCG (Fast-Moving Consumer Goods)</h3>
-                        <p>Bulk SMS serves as a powerful marketing tool for FMCG companies. They can use it to launch product promotions, send discount coupons, and notify customers about new product releases. Bulk SMS campaigns help create brand awareness, drive customer engagement, and increase sales by reaching a large number of consumers instantly.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Announcing product launches, discounts, or special offers to a wide customer base.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Conducting customer satisfaction surveys and gathering feedback.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Notifying customers about new stock availability or limited-time promotions.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Tour &amp; Travels</h3>
-                        <p>In the tour and travel industry, bulk SMS can be used to provide updates on travel itineraries, flight details, hotel bookings, and travel packages. It allows travel agencies to send personalized offers and discounts, making it easier to attract customers and build customer loyalty. Additionally, it can be utilized for feedback collection and post-trip follow-ups.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Sharing travel itineraries, booking confirmations, and flight/train/bus updates.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Offering exclusive deals and packages to potential customers.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Gathering customer reviews and testimonials for marketing purposes.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Automobiles</h3>
-                        <p>Bulk SMS offers several benefits for the automobile industry. Car dealerships can use it to inform customers about new vehicle models, upcoming sales events, and service reminders. It enables efficient communication with customers regarding test drives, financing options, and after-sales support. Bulk SMS campaigns help generate leads, increase footfall, and enhance customer satisfaction.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Notifying customers about vehicle servicing reminders, insurance renewals, or warranty expirations.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Announcing new car models, discounts, or test drive opportunities.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Sending personalized offers or updates to existing customers based on their preferences.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Logistics</h3>
-                        <p>Bulk SMS is advantageous for the logistics industry as it facilitates effective communication with drivers, warehouse personnel, and clients. It can be used to send delivery status updates, track shipments, and inform clients about any delays or changes in schedules. Bulk SMS helps streamline logistics operations, improve customer service, and ensure smooth coordination among stakeholders.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Providing tracking updates to customers regarding their shipments or deliveries.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Sending notifications about order confirmations, delays, or rescheduling.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Conducting customer satisfaction surveys and gathering feedback for process improvement.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Media &amp; Entertainment</h3>
-                        <p>Bulk SMS plays a crucial role in the media and entertainment industry. It enables content providers to promote upcoming events, ticket sales, and artist appearances. It can be used to send breaking news alerts, sports updates, and promotional offers for subscription services. Bulk SMS campaigns help engage audiences, increase event attendance, and build brand loyalty in the competitive media landscape.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Sharing updates on upcoming movie releases, concert dates, or ticket availability.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Sending promotional offers, discount codes, or loyalty program updates.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Conducting audience polls or surveys to gather opinions and preferences.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Advertising &amp; Marketing</h3>
-                        <p>Bulk SMS plays a crucial role in the Advertising &amp; Marketing industry by enabling businesses to reach a large audience instantly. It allows marketers to send promotional messages, product updates, and special offers to potential customers, enhancing brand visibility and engagement. The ability to target specific demographics ensures efficient and cost-effective campaigns, driving higher conversions and sales.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Instant reach to a wide audience.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Cost-effective marketing strategy.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Enhanced customer engagement and personalization.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Banking &amp; Financial Sector</h3>
-                        <p>In the Banking &amp; Financial Sector, Bulk SMS is instrumental in facilitating seamless communication with customers. It provides timely alerts for transactions, balance updates, payment reminders, and security notifications, enhancing customer satisfaction and trust. Bulk SMS is a reliable way to inform clients about new financial products, services, and investment opportunities, ensuring effective customer engagement.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Secure and timely transaction alerts.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Fraud prevention and account security.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Effective customer communication and service updates.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Ecommerce</h3>
-                        <p>For E-commerce businesses, Bulk SMS is an invaluable tool for customer retention and acquisition. It allows them to send order confirmations, shipping updates, and delivery notifications, improving the overall customer experience. Additionally, promotional SMS campaigns can drive traffic to the website or app, promoting new products, discounts, and sales events, boosting sales and brand loyalty.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Order confirmations and delivery updates.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Promotional offers and discounts.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Cart abandonment reminders and personalized recommendations.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Education</h3>
-                        <p>Bulk SMS has a significant impact on the Education industry by facilitating communication between educational institutions, students, and parents. Schools and universities use it for broadcasting important announcements, exam schedules, and academic updates. Teachers can also send homework reminders and progress reports to parents, fostering a collaborative learning environment.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Exam reminders and schedule updates.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Parent-teacher communication.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Emergency alerts and campus notifications.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Event Management</h3>
-                        <p>In the Event Management industry, Bulk SMS serves as a powerful means of event promotion and coordination. Event organizers use it to send invitations, reminders, and event details to attendees, ensuring maximum participation. During the event, real-time updates and changes can be communicated efficiently through Bulk SMS, enhancing the overall event experience.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Event reminders and ticket sales promotion.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Real-time updates and schedule changes.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Feedback collection and post-event engagement.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Government Public Utilities</h3>
-                        <p>Bulk SMS plays a vital role in Government Public Utilities by enabling effective communication with citizens. Government bodies use it to disseminate important information about public services, emergency alerts, and policy updates. Bulk SMS ensures that critical messages reach a wide audience swiftly, fostering transparency and public engagement.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Service outage notifications.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Emergency alerts and public safety announcements.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Citizen engagement and feedback collection.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Health &amp; Beauty Industry</h3>
-                        <p>In the Health &amp; Beauty Industry, Bulk SMS helps clinics, hospitals, and beauty salons improve patient and client management. Appointment reminders, health tips, and beauty service promotions can be easily conveyed through Bulk SMS, reducing no-shows and enhancing customer retention. It also aids in disseminating public health information during emergencies or outbreaks.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Appointment reminders and rescheduling.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Health tips and wellness information.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Promotional offers and loyalty programs.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">NGOs and Community Groups</h3>
-                        <p>Bulk SMS is an essential tool for NGOs and Community Groups to raise awareness, rally support, and coordinate efforts. They can send messages to inform about upcoming events, donation campaigns, and volunteer opportunities, effectively engaging their target audience. Bulk SMS enables them to reach out to a large number of people, fostering community involvement and support.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Volunteer recruitment and coordination.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Fundraising campaigns and donation appeals.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Event invitations and awareness campaigns.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Restaurants &amp; Takeaways</h3>
-                        <p>For Restaurants &amp; Takeaways, Bulk SMS is an effective means of customer engagement and marketing. They can send out special offers, menu updates, and exclusive discounts to attract customers. Bulk SMS can also be used for order confirmations and delivery updates, improving customer satisfaction and retention.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Table reservations and special offers.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Order updates and delivery notifications.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Customer feedback collection and loyalty programs.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <div class="border rounded-4 p-4 h-100">
-                        <small class="d-block text-uppercase fw-bold mb-1">Bulk SMS</small>
-                        <h3 class="h5 fw-bold mb-2">Retail</h3>
-                        <p>In the Retail industry, Bulk SMS helps retailers drive sales and customer loyalty. Retailers can send personalized offers, loyalty program updates, and product promotions via SMS, encouraging repeat purchases. Bulk SMS also serves as a quick and direct way to inform customers about store events, new arrivals, and limited-time sales.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> Flash sales and limited-time offers.</p>
-                        <p class="mt-1 mb-1"><i class="ri-arrow-right-fill"></i> New product launches and exclusive previews.</p>
-                        <p class="mt-1 mb-0"><i class="ri-arrow-right-fill"></i> Customer loyalty and rewards programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sectionGap bg-soft">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 reveal">
+                    <div class="supportHelp">
+                        <div class="row g-4 justify-content-around align-items-center">
+                            <div class="col-lg-5">
+                                <img src="../assets/images/homeSupport.webp" class="img-fluid" alt="Glocious customer support and consultation" title="Talk to Glocious">
+                            </div>
+                            <div class="col-lg-5">
+                                <h2 class="text-white">Let's Build Your Industry Playbook</h2>
+                                <p>Talk to a messaging specialist and get a campaign blueprint tailored to your sector — across SMS, WhatsApp, voice, IVR and e-mail.</p>
+                                <div class="d-flex align-items-center justify-content-center justify-content-lg-start mt-4 mt-md-5 gap-2 gap-lg-4">
+                                    <button type="button" class="btnPro bg-white fs-14" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">Schedule a Consultation</button>
+                                    <a href="../contact/index.html" class="btnPro2 text-white">Contact Us <span><i class="ri-arrow-right-line"></i></span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -554,7 +758,7 @@
                         icon: "warning",
                         title: "Invalid Characters",
                         text: "Only English characters are allowed.",
-                        confirmButtonColor: "#008522",
+                        confirmButtonColor: "#0D1B2A",
                         confirmButtonText: "OK"
                     });
                 }
@@ -642,8 +846,9 @@
     <!-- Javascript -->
     <script src="../cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>
+    <script src="../cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.0/slick.min.js"></script>
     <script src="../cdnjs.cloudflare.com/ajax/libs/choices.js/7.0.0/choices.min.js"></script>
-    <script src="../assets/js/nav2.js"></script>
+    <script src="../assets/js/nav2.js?v=20261111"></script>
     <script>
         // Navbar Shadow on Scroll
         var nav = document.querySelector(".navigation");
@@ -663,6 +868,83 @@
                 removeItemButton: true
             });
         });
+    </script>
+    <script>
+        (function () {
+            // Reveal on scroll
+            var reveals = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry, i) {
+                        if (entry.isIntersecting) {
+                            var el = entry.target;
+                            setTimeout(function () { el.classList.add('is-in'); }, (i % 4) * 90);
+                            io.unobserve(el);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+                reveals.forEach(function (el) { io.observe(el); });
+            } else {
+                reveals.forEach(function (el) { el.classList.add('is-in'); });
+            }
+
+            // Client logo marquee
+            if (window.jQuery && jQuery.fn.slick) {
+                jQuery('.logo-slider').slick({
+                    slidesToShow: 8,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    dots: false,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 0,
+                    speed: 4000,
+                    cssEase: 'linear',
+                    variableWidth: false,
+                    pauseOnHover: false,
+                    pauseOnFocus: false,
+                    responsive: [
+                        { breakpoint: 1200, settings: { slidesToShow: 5 } },
+                        { breakpoint: 768, settings: { slidesToShow: 3 } },
+                        { breakpoint: 576, settings: { slidesToShow: 2 } }
+                    ]
+                });
+            }
+
+            // Counters animate when stats enter the viewport
+            var counters = document.querySelectorAll('.counting');
+            function animateCounter(el) {
+                var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+                var start = null;
+                var duration = 1800;
+                function tick(ts) {
+                    if (!start) start = ts;
+                    var p = Math.min((ts - start) / duration, 1);
+                    var eased = 1 - Math.pow(1 - p, 3);
+                    el.textContent = Math.floor(eased * target).toLocaleString('en-IN');
+                    if (p < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        el.textContent = target.toLocaleString('en-IN');
+                    }
+                }
+                requestAnimationFrame(tick);
+            }
+            var statsWrap = document.querySelector('.industryStats');
+            if (statsWrap && 'IntersectionObserver' in window) {
+                var sio = new IntersectionObserver(function (entries, obs) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            counters.forEach(animateCounter);
+                            obs.disconnect();
+                        }
+                    });
+                }, { threshold: 0.3 });
+                sio.observe(statsWrap);
+            } else {
+                counters.forEach(animateCounter);
+            }
+        })();
     </script>
 </body>
 
