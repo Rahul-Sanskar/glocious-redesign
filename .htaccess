@@ -1,0 +1,104 @@
+# =============================================================================
+#  Glocious Infotech Pvt. Ltd. - Apache configuration (cPanel / shared hosting)
+# =============================================================================
+#  This file is optional for local development: it only takes effect on an
+#  Apache server that serves the site root (public_html).
+# =============================================================================
+
+# --- Default document ---------------------------------------------------------
+DirectoryIndex index.html index.php
+
+# --- Disable directory listing ------------------------------------------------
+Options -Indexes
+
+# --- Character set ------------------------------------------------------------
+AddDefaultCharset UTF-8
+
+# --- Keep PHP handler available for the contact endpoint ----------------------
+#  contact/contact-submit.php is served by default by cPanel; no override
+#  is required here. Do not add a handler unless your host specifies one.
+
+# =============================================================================
+#  Redirects (canonical domain + HTTPS)
+# =============================================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^(.*)$ https://glocious.com/$1 [R=301,L]
+
+    # Force non-www (canonical host is https://glocious.com)
+    RewriteCond %{HTTP_HOST} ^www\.glocious\.com$ [NC]
+    RewriteRule ^(.*)$ https://glocious.com/$1 [R=301,L]
+
+    # Allow clean URLs: /about-us -> /about-us/index.html
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}/index.html -f
+    RewriteRule ^(.+?)/?$ $1/index.html [L]
+</IfModule>
+
+# =============================================================================
+#  Compression
+# =============================================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# =============================================================================
+#  Browser caching
+# =============================================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML - short cache so content updates propagate quickly
+    ExpiresByType text/html                 "access plus 0 seconds"
+
+    # CSS / JS
+    ExpiresByType text/css                  "access plus 1 month"
+    ExpiresByType application/javascript    "access plus 1 month"
+    ExpiresByType application/x-javascript  "access plus 1 month"
+
+    # Images
+    ExpiresByType image/webp                "access plus 1 year"
+    ExpiresByType image/png                 "access plus 1 year"
+    ExpiresByType image/jpeg                "access plus 1 year"
+    ExpiresByType image/gif                 "access plus 1 year"
+    ExpiresByType image/svg+xml             "access plus 1 year"
+    ExpiresByType image/x-icon              "access plus 1 year"
+
+    # Fonts / media
+    ExpiresByType font/woff                 "access plus 1 year"
+    ExpiresByType font/woff2                "access plus 1 year"
+    ExpiresByType application/font-woff     "access plus 1 year"
+    ExpiresByType video/mp4                 "access plus 1 year"
+</IfModule>
+
+# =============================================================================
+#  Security headers
+# =============================================================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# =============================================================================
+#  Internal documentation
+# =============================================================================
+#  The migration/reference notes live in the site root but are not part of the
+#  public website. Block them from being served.
+<FilesMatch "\.md$">
+    Require all denied
+</FilesMatch>
+
+# =============================================================================
+#  Error documents
+# =============================================================================
+#  The site has no dedicated 404 page. Apache's default 404 is used so search
+#  engines are not served a soft-404 (200) response.
