@@ -5335,3 +5335,134 @@ Inner Pages
         will-change: auto;
     }
 }
+
+/* ---------------------------------------------------------
+   Rotating solution strip — motion polish
+   The cards advance right-to-left; these cues make the travel
+   direction and the active card unmistakable.
+   --------------------------------------------------------- */
+
+@keyframes solutionPanelIn {
+    from { opacity: 0; transform: translate3d(28px, 0, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes solutionRowIn {
+    from { opacity: 0; transform: translate3d(14px, 0, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes solutionLabelIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes solutionRailSweep {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+@media only screen and (min-width: 1025px) {
+    /* Glide the strip instead of snapping it */
+    .dwp-solution-list ul li {
+        transition:
+            width 900ms cubic-bezier(0.22, 1, 0.36, 1),
+            transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 420ms ease,
+            filter 420ms ease;
+    }
+
+    /* Depth: the active card lifts forward, the rest recede */
+    .dwp-solution-list ul li {
+        filter: saturate(0.92) brightness(0.96);
+    }
+
+    .dwp-solution-list ul li.active {
+        z-index: 1;
+        filter: none;
+        box-shadow: 0 20px 42px rgba(16, 16, 16, 0.26);
+    }
+
+    .dwp-solution-list ul li:not(.active):hover {
+        filter: saturate(1.02) brightness(1.05);
+    }
+
+    /* Panel and rows ease in from the right, matching travel direction */
+    .dwp-solution-list ul li.active .solution-block h3 {
+        animation: solutionPanelIn 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .dwp-solution-list ul li.active .solution-block .sb-content p {
+        animation: solutionRowIn 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .dwp-solution-list ul li.active .solution-block .sb-content p:nth-of-type(1) { animation-delay: 100ms; }
+    .dwp-solution-list ul li.active .solution-block .sb-content p:nth-of-type(2) { animation-delay: 160ms; }
+    .dwp-solution-list ul li.active .solution-block .sb-content p:nth-of-type(3) { animation-delay: 220ms; }
+    .dwp-solution-list ul li.active .solution-block .sb-content p:nth-of-type(4) { animation-delay: 280ms; }
+    .dwp-solution-list ul li.active .solution-block .sb-content p:nth-of-type(5) { animation-delay: 340ms; }
+
+    /* The collapsed label eases back once a card folds away */
+    .dwp-solution-list ul li:not(.active) span.roate-txt {
+        animation: solutionLabelIn 460ms ease both;
+        animation-delay: 240ms;
+    }
+
+    /* Timing rail sweeps right-to-left in step with the auto-advance */
+    .dwp-solution-list ul li.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.9);
+        transform-origin: right center;
+        animation: solutionRailSweep 1000ms linear both;
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    /* Freeze the rail while the visitor is exploring (rotation is paused) */
+    .dwp-solution-list:hover ul li.active::after,
+    .dwp-solution-list:focus-within ul li.active::after {
+        animation-play-state: paused;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dwp-solution-list ul li {
+        transition: none;
+        will-change: auto;
+    }
+
+    .dwp-solution-list ul li,
+    .dwp-solution-list ul li.active,
+    .dwp-solution-list ul li:not(.active):hover {
+        filter: none;
+    }
+
+    .dwp-solution-list ul li.active .solution-block h3,
+    .dwp-solution-list ul li.active .solution-block .sb-content p,
+    .dwp-solution-list ul li:not(.active) span.roate-txt {
+        animation: none;
+    }
+
+    .dwp-solution-list ul li.active::after {
+        display: none;
+    }
+}
+
+/* ===== Site-wide hero background images ===== */
+.hero-bg {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .hero-bg {
+        background-attachment: scroll !important;
+        background-position: center top !important;
+    }
+}
