@@ -1933,6 +1933,9 @@ function hasTooFewRealWords(text) {
   return text.trim().split(/\s+/).length < 3;
 }
 
+function isEnglishOnly(value) {
+  return /^[\x00-\x7F]*$/.test(value);
+}
 
 // --------------------
 // Phone numeric filter
@@ -1942,10 +1945,6 @@ phoneInput.addEventListener("input", () => {
   phoneInput.value = phoneInput.value.replace(/\D/g, "");
 });
 
-if (!isEnglishOnly(messageVal)) {
-  isSubmit && showError(messageTextarea, "Message must be English only.");
-  valid = false;
-}
 // --------------------
 // Main Validation
 // --------------------
@@ -2027,7 +2026,9 @@ const messageVal = sanitize(messageTextarea.value).trim();
 
 // Message is OPTIONAL
 if (messageVal !== "") {
-  if (messageVal.length < 10) {
+  if (!isEnglishOnly(messageVal)) {
+    messageError = "Message must be English only.";
+  } else if (messageVal.length < 10) {
     messageError = "Message is too short.";
   } else if (hasRepeatedPatterns(messageVal)) {
     messageError = "Message looks like spam.";
