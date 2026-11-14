@@ -1,6 +1,7 @@
 $('.counting').each(function () {
     var $this = $(this),
-        countTo = $this.attr('data-count');
+        countTo = $this.attr('data-count'),
+        suffix = $this.attr('data-suffix') || '';
     $({
         countNum: $this.text()
     }).animate({
@@ -9,10 +10,10 @@ $('.counting').each(function () {
         duration: 5000,
         easing: 'linear',
         step: function () {
-            $this.text(Math.floor(this.countNum));
+            $this.text(Math.floor(this.countNum) + suffix);
         },
         complete: function () {
-            $this.text(this.countNum);
+            $this.text(this.countNum + suffix);
         }
     });
 });
