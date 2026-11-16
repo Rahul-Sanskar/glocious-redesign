@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2167" height="725" viewBox="0 0 2167 725" role="img" aria-labelledby="title desc">
+  <title id="title">Glocious</title>
+  <desc id="desc">Multicoloured geometric ribbon emblem and large black Glocious wordmark.</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2=".3"><stop stop-color="#7edcff"/><stop offset="1" stop-color="#0798e8"/></linearGradient>
+    <linearGradient id="yellow" x1="0" y1="0" x2="1" y2=".5"><stop stop-color="#ffe17b"/><stop offset="1" stop-color="#ffad00"/></linearGradient>
+    <linearGradient id="pink" x1="0" y1="0" x2=".1" y2="1"><stop stop-color="#e90083"/><stop offset=".7" stop-color="#f00078"/><stop offset="1" stop-color="#ffb4c9"/></linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2=".2"><stop stop-color="#00a94f"/><stop offset="1" stop-color="#00a33c"/></linearGradient>
+    <linearGradient id="gray" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#202124"/><stop offset="1" stop-color="#77787a"/></linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2=".4"><stop stop-color="#ff3975"/><stop offset=".55" stop-color="#f00043"/><stop offset="1" stop-color="#c90037"/></linearGradient>
+    <linearGradient id="redTop" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffa3bd"/><stop offset="1" stop-color="#ed6a8d"/></linearGradient>
+  </defs>
+  <!-- Multicolour geometric emblem -->
+  <g stroke="none">
+    <path d="M58 197 L289 66 L289 178 L158 251 Z" fill="url(#blue)"/>
+    <path d="M289 66 L492 180 L492 293 L289 178 Z" fill="url(#yellow)"/>
+    <path d="M289 161 L492 274 L492 293 L289 178 Z" fill="#e99c00" opacity=".35"/>
+    <path d="M58 197 L158 251 L155 401 L58 447 Z" fill="url(#pink)"/>
+    <path d="M58 197 L158 251 L158 270 L58 217 Z" fill="#ff4a9b" opacity=".25"/>
+    <path d="M155 401 L284 470 L284 584 L58 458 Z" fill="url(#green)"/>
+    <path d="M284 470 L492 411 L492 465 L284 584 Z" fill="url(#gray)"/>
+    <path d="M288 238 L492 350 L492 466 L288 354 Z" fill="url(#red)"/>
+    <path d="M288 238 L492 350 L492 384 L288 323 Z" fill="url(#redTop)"/>
+    <path d="M288 323 L492 384 L492 466 L288 354 Z" fill="#c9003c" opacity=".15"/>
+  </g>
+  <!-- Large wordmark, aligned to the emblem's visual centre -->
+  <text x="558" y="472" fill="#050505" font-family="Didot, 'Bodoni 72', 'Times New Roman', Georgia, serif" font-size="430" font-weight="400" letter-spacing="-11">Glocious</text>
+</svg>
