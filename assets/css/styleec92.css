@@ -5950,3 +5950,119 @@ img { transition: opacity 0.3s ease; }
 .counterBg.visible-anim {
     animation-play-state: running;
 }
+
+
+/* ============================================================
+   GLOBAL FONT SIZE UPGRADE
+   — All values bumped up for better readability site-wide
+   ============================================================ */
+
+/* Base */
+html { font-size: 17px !important; }
+
+body { font-size: 1.0625rem; line-height: 1.75; }
+
+/* Headings */
+h1 { font-size: 3.25rem !important; line-height: 1.15 !important; }
+h2 { font-size: 2.5rem  !important; line-height: 1.2  !important; }
+h3 { font-size: 1.9rem  !important; line-height: 1.3  !important; }
+h4 { font-size: 1.45rem !important; line-height: 1.35 !important; }
+h5 { font-size: 1.2rem  !important; line-height: 1.4  !important; }
+h6 { font-size: 1.0rem  !important; line-height: 1.4  !important; }
+
+/* Body paragraphs */
+p { font-size: 1.0625rem; line-height: 1.8; }
+
+/* Hero banner text */
+.bannerContent-38 h1 { font-size: 3.6rem !important; }
+.bannerContent-38 h3 { font-size: 1.3rem  !important; font-weight: 300 !important; }
+
+/* About section */
+.aboutPanel h2 { font-size: 2.75rem !important; }
+
+/* Services slider */
+.serviceBox h4  { font-size: 1.3rem  !important; }
+.serviceBox p   { font-size: 0.95rem !important; }
+.serviceBox small { font-size: 0.875rem !important; }
+
+/* Testimonial cards */
+.testi-card-quote  { font-size: 0.975rem !important; }
+.testi-card-info h6 { font-size: 1rem   !important; }
+.testi-card-info small { font-size: 0.825rem !important; }
+.testi-header h3   { font-size: 2.25rem !important; }
+.testi-header p    { font-size: 1.0625rem !important; }
+.testi-overall-rating span { font-size: 1rem !important; }
+.testi-badge       { font-size: 0.8rem  !important; }
+
+/* Nav links */
+.nav-links         { font-size: 1rem    !important; }
+.dropdown a        { font-size: 0.9375rem !important; }
+
+/* Footer */
+footer .foot-links h4       { font-size: 1.1rem  !important; }
+footer .foot-links li a     { font-size: 0.9375rem !important; }
+footer .foot-links .bottom-foot span { font-size: 0.9375rem !important; }
+footer a           { font-size: 0.9375rem !important; }
+
+/* Section chips */
+.section-chip      { font-size: 0.75rem !important; }
+.testi-badge       { font-size: 0.75rem !important; }
+
+/* Misc small text */
+.testi-meta        { font-size: 0.925rem !important; }
+.slider-item .info h6 { font-size: 0.95rem !important; }
+.slider-item .info small { font-size: 0.8rem !important; }
+
+/* Inner page hero headings */
+.whatsappApiHeader h1 { font-size: 2.75rem !important; }
+.whatsappApiHeader h3 { font-size: 1.25rem !important; }
+
+/* Buttons */
+.btnPro  { font-size: 1rem    !important; }
+.btnPro2 { font-size: 1rem    !important; }
+
+/* Counter numbers */
+.counterBg .itemList .counting { font-size: 3rem   !important; }
+.counterBg .itemList p          { font-size: 1.0625rem !important; }
+
+/* address-block */
+.address-block h6  { font-size: 0.9rem  !important; }
+.address-block span { font-size: 0.9rem !important; }
+
+/* ---- RESPONSIVE OVERRIDES ---- */
+@media (max-width: 1200px) {
+    html          { font-size: 16px !important; }
+    h1            { font-size: 2.75rem !important; }
+    h2            { font-size: 2.1rem  !important; }
+    h3            { font-size: 1.65rem !important; }
+    .bannerContent-38 h1 { font-size: 2.9rem  !important; }
+    .whatsappApiHeader h1 { font-size: 2.4rem !important; }
+}
+
+@media (max-width: 768px) {
+    html          { font-size: 15.5px !important; }
+    h1            { font-size: 2.25rem !important; }
+    h2            { font-size: 1.8rem  !important; }
+    h3            { font-size: 1.45rem !important; }
+    h4            { font-size: 1.25rem !important; }
+    .bannerContent-38 h1  { font-size: 2.1rem  !important; }
+    .bannerContent-38 h3  { font-size: 1.1rem  !important; }
+    .whatsappApiHeader h1 { font-size: 1.9rem  !important; }
+    .testi-header h3      { font-size: 1.75rem !important; }
+    .counterBg .itemList .counting { font-size: 2.4rem !important; }
+}
+
+@media (max-width: 480px) {
+    html          { font-size: 15px !important; }
+    h1            { font-size: 1.9rem  !important; }
+    h2            { font-size: 1.6rem  !important; }
+    h3            { font-size: 1.3rem  !important; }
+    h4            { font-size: 1.15rem !important; }
+    p             { font-size: 1rem    !important; }
+    .bannerContent-38 h1  { font-size: 1.8rem  !important; }
+    .bannerContent-38 h3  { font-size: 1rem    !important; }
+    .testi-card-quote     { font-size: 0.925rem !important; }
+    .counterBg .itemList .counting { font-size: 2rem !important; }
+    .btnPro  { font-size: 0.9375rem !important; }
+    .btnPro2 { font-size: 0.9375rem !important; }
+}
