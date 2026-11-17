@@ -6066,3 +6066,45 @@ footer a           { font-size: 0.9375rem !important; }
     .btnPro  { font-size: 0.9375rem !important; }
     .btnPro2 { font-size: 0.9375rem !important; }
 }
+
+
+/* ============================================================
+   SERVICE CARDS — fix white-on-white text
+   ============================================================ */
+
+/* Scope the white colour only to the section heading/subtitle, not card content */
+.servicePanel > .container > .row > .col-lg-9 h2,
+.servicePanel > .container > .row > .col-lg-9 p,
+.servicePanel > .container > .row > .col-xl-8 h2,
+.servicePanel > .container > .row > .col-xl-8 p { color: #fff !important; }
+
+/* Override the broad rule that makes all servicePanel p white */
+.servicePanel .serviceBox p,
+.servicePanel .serviceBox h4,
+.servicePanel .serviceBox small,
+.servicePanel .serviceBox a {
+    color: #0D1B2A !important;
+    -webkit-text-fill-color: #0D1B2A !important;
+    background-image: none !important;
+}
+
+.servicePanel .serviceBox h4 {
+    color: #0D1B2A !important;
+    -webkit-text-fill-color: #0D1B2A !important;
+}
+
+.servicePanel .serviceBox small {
+    color: #555 !important;
+    -webkit-text-fill-color: #555 !important;
+}
+
+.servicePanel .serviceBox a {
+    color: #E30086 !important;
+    -webkit-text-fill-color: #E30086 !important;
+    font-weight: 600;
+}
+
+.servicePanel .serviceBox a:hover {
+    color: #0D1B2A !important;
+    -webkit-text-fill-color: #0D1B2A !important;
+}
