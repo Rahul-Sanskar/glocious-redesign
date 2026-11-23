@@ -2491,3 +2491,287 @@ footer .mb-3 a:hover {
 .cSlidersingle .btnPro2::before {
   display: none !important;
 }
+
+
+/* ================================================================
+ *  TRANSPARENT NAV — blends with hero video on homepage
+ *  Only the homepage has the videoBanner-37 class on its hero.
+ *  Inner pages use whatsappApiHeader / hero-bg which have a light
+ *  background, so they keep the white nav.
+ * ================================================================ */
+
+/* Transparent state — over the video */
+.videoBanner-37 .navigation,
+.videoBanner-37 .navbar {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* CTA button on transparent nav — white outlined */
+.videoBanner-37 .nav-cta .btnPro,
+.videoBanner-37 .nav-cta .btnPro:not(.bg-white) {
+  background: rgba(48, 157, 218, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  backdrop-filter: blur(4px);
+}
+
+.videoBanner-37 .nav-cta .btnPro:hover {
+  background: var(--gb-blue) !important;
+  border-color: var(--gb-blue) !important;
+}
+
+/* Mobile CTA button in the nav bar (d-lg-none variant) */
+.videoBanner-37 .nav-inner .btnPro.bg-white {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Logo — ensure visible over dark video */
+/* [removed conflicting logo filter] */
+
+/* Scroll-on state — solid white nav with shadow (overrides transparent) */
+.videoBanner-37 .scroll-on,
+.scroll-on.navigation,
+.scroll-on.navbar {
+  background: rgba(255, 255, 255, 0.97) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-shadow: 0 2px 20px rgba(55, 58, 62, 0.10) !important;
+}
+
+/* [removed conflicting logo filter] */
+
+/* Restore CTA button on scroll */
+.scroll-on .nav-cta .btnPro {
+  background: var(--gb-blue) !important;
+  border-color: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  backdrop-filter: none !important;
+}
+
+/* Nav links already white from the inline <style> in index.html;
+   on scroll they switch to charcoal via .scroll-on .nav-links rule
+   already defined earlier in brand.css — no change needed there. */
+
+
+/* ================================================================
+ *  NAV LINK COLOUR — white over video, charcoal after scroll
+ * ================================================================ */
+
+/* Over the video — white links */
+.videoBanner-37 .nav-links,
+.videoBanner-37 .nav-links .caret {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+.videoBanner-37 .nav-links:hover {
+  color: rgba(255, 255, 255, 0.75) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.75) !important;
+  background-image: none !important;
+}
+
+/* Mobile toggle — white over video */
+.videoBanner-37 .nav-toggle {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* After scroll — charcoal links (overrides the transparent state) */
+.videoBanner-37 .scroll-on .nav-links,
+.scroll-on .nav-links,
+.scroll-on .nav-links .caret {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+.scroll-on .nav-links:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+.scroll-on .nav-toggle {
+  color: var(--gb-charcoal) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Smooth colour transition on the links themselves */
+.nav-links {
+  transition: color 0.25s ease, -webkit-text-fill-color 0.25s ease !important;
+}
+
+
+/* ================================================================
+ *  SCHEDULE A CONSULTATION BUTTON — scroll state fix
+ * ================================================================ */
+
+/* Over the video — keep it visible (semi-transparent blue) */
+.videoBanner-37 .nav-cta .btnPro,
+.videoBanner-37 .nav-inner .btnPro {
+  background: rgba(48, 157, 218, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  backdrop-filter: blur(4px);
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* After scroll — solid Glocious Blue button, clearly visible on white nav */
+.scroll-on .nav-cta .btnPro,
+.scroll-on .nav-inner .btnPro,
+.scroll-on .btnPro.bg-white,
+.scroll-on .btnPro[style*="line-height"] {
+  background: var(--gb-blue) !important;
+  border-color: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 2px 10px rgba(48, 157, 218, 0.3) !important;
+  backdrop-filter: none !important;
+}
+
+.scroll-on .nav-cta .btnPro:hover,
+.scroll-on .nav-inner .btnPro:hover {
+  background: #1a7fb8 !important;
+  border-color: #1a7fb8 !important;
+  box-shadow: 0 4px 16px rgba(48, 157, 218, 0.4) !important;
+}
+
+
+/* ================================================================
+ *  SCROLL-ON NAV — CONSOLIDATED FINAL FIX
+ *
+ *  The JS adds .scroll-on to the <nav class="navbar navigation">
+ *  element itself. Correct selector is .navigation.scroll-on
+ *  (same element), NOT .scroll-on .nav-links (descendant).
+ *  All previous conflicting rules are superseded by this block.
+ * ================================================================ */
+
+/* NAV WRAPPER — white background on scroll */
+.navigation.scroll-on {
+  background: #fff !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-shadow: 0 2px 20px rgba(55, 58, 62, 0.10) !important;
+}
+
+/* NAV LINKS — charcoal on scroll */
+.navigation.scroll-on .nav-links {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+.navigation.scroll-on .nav-links:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* CARET — inherits from link */
+.navigation.scroll-on .nav-links .caret {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* [removed conflicting logo filter] */
+
+/* SCHEDULE A CONSULTATION BUTTON — solid blue on scroll */
+.navigation.scroll-on .btnPro,
+.navigation.scroll-on .nav-cta .btnPro,
+.navigation.scroll-on .nav-inner .btnPro {
+  background: var(--gb-blue) !important;
+  border-color: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 2px 10px rgba(48, 157, 218, 0.25) !important;
+  backdrop-filter: none !important;
+}
+
+.navigation.scroll-on .btnPro:hover,
+.navigation.scroll-on .nav-cta .btnPro:hover {
+  background: #1a7fb8 !important;
+  border-color: #1a7fb8 !important;
+}
+
+/* HAMBURGER TOGGLE — dark on scroll */
+.navigation.scroll-on .nav-toggle {
+  color: var(--gb-charcoal) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* RAINBOW ACCENT BAR — stays at bottom of nav on scroll */
+.navigation.scroll-on::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg,
+    var(--gb-blue) 0%,
+    var(--gb-magenta) 33%,
+    var(--gb-yellow) 66%,
+    var(--gb-green) 100%);
+  pointer-events: none;
+}
+
+/* ----------------------------------------------------------------
+ *  TRANSPARENT STATE — over the video (not scrolled)
+ *  Lower specificity than .navigation.scroll-on above, so scroll
+ *  state always wins.
+ * ---------------------------------------------------------------- */
+.videoBanner-37 .navigation:not(.scroll-on) {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.videoBanner-37 .navigation:not(.scroll-on) .nav-links {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+.videoBanner-37 .navigation:not(.scroll-on) .nav-links:hover {
+  color: rgba(255, 255, 255, 0.75) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* [removed conflicting logo filter] */
+
+.videoBanner-37 .navigation:not(.scroll-on) .nav-cta .btnPro,
+.videoBanner-37 .navigation:not(.scroll-on) .nav-inner .btnPro {
+  background: rgba(48, 157, 218, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.videoBanner-37 .navigation:not(.scroll-on) .nav-toggle {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+
+/* [removed conflicting logo filter] */
+
+
+/* ================================================================
+ *  LOGO — always render at full colour, never filtered
+ *  JS swaps src between glocious-logo-white.svg (over video)
+ *  and glocious-logo.svg (after scroll). CSS never touches filter.
+ * ================================================================ */
+.nav-logo img {
+  filter: none !important;
+  height: 46px;
+  width: auto;
+  transition: opacity 0.2s ease;
+}

@@ -248,13 +248,7 @@
     </script>  
     
     <style>
-        /* Nav links white over hero video */
-        .nav-links{
-            color: #fff;
-            -webkit-text-fill-color: #fff;
-            background-image: none;
-        }
-        /* Logo slider edge fade matches the logoPanel background (white) */
+        /* Logo slider edge fade */
         .logo-slider .slick-list:before{
             background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0) 100%);
         }
@@ -265,9 +259,6 @@
             background-color: transparent !important;
             color: #fff !important;
             margin: 0;
-        }
-        @media (max-width: 991px) {
-            .nav-toggle { color: #fff; border: 1px solid rgba(255,255,255,0.6); border-radius: 6px; }
         }
         @media (max-width: 480px) {
             .dwp-solution-list ul li .solution-block .sb-content {
@@ -1088,16 +1079,20 @@
     <script src="www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        // Navbar Shadow on Scroll
+        // Navbar Shadow on Scroll + Logo swap
         var nav = document.querySelector(".navigation");
+        var navLogo = document.querySelector(".nav-logo img");
         window.onscroll = function () {
             if (document.documentElement.scrollTop > 150) {
                 nav.classList.add("scroll-on");
-            }
-            else {
+                if (navLogo) navLogo.setAttribute("src", "assets/images/glocious-logo.svg");
+            } else {
                 nav.classList.remove("scroll-on");
+                if (navLogo) navLogo.setAttribute("src", "assets/images/glocious-logo-white.svg");
             }
         }
+        // Set white-wordmark logo on page load (hero is over video)
+        if (navLogo) navLogo.setAttribute("src", "assets/images/glocious-logo-white.svg");
         document.getElementById("copyright-year").textContent = new Date().getFullYear();
 
         $(document).ready(function(){
