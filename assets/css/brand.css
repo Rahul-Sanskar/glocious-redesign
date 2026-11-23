@@ -2981,3 +2981,682 @@ footer a:hover {
   -webkit-text-fill-color: #fff !important;
   color: #fff !important;
 }
+
+
+/* ================================================================
+ *  COMPREHENSIVE TEXT VISIBILITY FIX — Full Site Scan
+ *  Addresses every identified invisible-text problem across all 16
+ *  pages. Applied at end of brand.css for maximum cascade priority.
+ * ================================================================ */
+
+
+/* ----------------------------------------------------------------
+ * FIX 1: aboutHeader h1/h2 — WHITE ON NEAR-WHITE (CRITICAL)
+ * The inline style on about-us/index.html adds a heavy white
+ * overlay (86%–74% opacity), making bg effectively near-white.
+ * Force charcoal so text is readable.
+ * ---------------------------------------------------------------- */
+.aboutHeader h1,
+.aboutHeader h2,
+.aboutHeader h3 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+  text-shadow: none !important;
+}
+
+.aboutHeader p,
+.aboutHeader h3 {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 2: bannerContent-38 btnPro2 — CHARCOAL ON DARK VIDEO
+ * "Request a Demo" arrow button on the homepage hero.
+ * ---------------------------------------------------------------- */
+.bannerContent-38 .btnPro2,
+.videoBanner-37 .btnPro2 {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+.bannerContent-38 .btnPro2 span,
+.videoBanner-37 .btnPro2 span {
+  background: rgba(255,255,255,0.25) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.bannerContent-38 .btnPro2:hover,
+.videoBanner-37 .btnPro2:hover {
+  color: rgba(255,255,255,0.85) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 3: servicePanel — resolve cascade conflict ONCE AND FOR ALL
+ * styleec92.css sets dark navy bg !important after brand.css.
+ * We terminate the conflict by enforcing light bg + dark text
+ * with the highest possible specificity at the end of brand.css.
+ * ---------------------------------------------------------------- */
+html body .servicePanel {
+  background: var(--bg-secondary) !important;
+}
+
+html body .servicePanel h2,
+html body .servicePanel > .container h2 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .servicePanel p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .servicePanel .serviceBox h4 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .servicePanel .serviceBox small {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .servicePanel .serviceBox p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .servicePanel .serviceBox a {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 4: clientPanel2 — light bg + readable text (cascade final)
+ * ---------------------------------------------------------------- */
+html body .clientPanel2 {
+  background: linear-gradient(165deg,
+    var(--gb-blue-light) 0%,
+    #fff 40%,
+    var(--gb-magenta-light) 70%,
+    var(--gb-green-light) 100%) !important;
+}
+
+html body .clientPanel2 .testi-header h3 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .clientPanel2 .testi-header p,
+html body .clientPanel2 p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .clientPanel2 .testi-overall-rating span {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* Testi cards on light bg — charcoal text */
+html body .testi-card {
+  background: #fff !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+html body .testi-card .testi-card-info h6 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .testi-card .testi-card-info small {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .testi-card .testi-card-quote {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+  font-style: italic;
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 5: nav links hover — clean blue, no gradient on all pages
+ * ---------------------------------------------------------------- */
+.navigation .nav-links:hover,
+.navigation.scroll-on .nav-links:hover,
+.nav-menu .nav-links:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 6: supportHelp — white text on dark section (all pages)
+ * ---------------------------------------------------------------- */
+html body .supportHelp,
+html body .sectionGap .supportHelp {
+  background: linear-gradient(135deg,
+    var(--gb-charcoal) 0%, #1e2328 100%) !important;
+}
+
+html body .supportHelp h2,
+html body .supportHelp h3,
+html body .supportHelp h4,
+html body .supportHelp h5,
+html body .supportHelp p,
+html body .supportHelp li,
+html body .supportHelp strong,
+html body .supportHelp small,
+html body .supportHelp span:not(.section-chip):not(.badge-brand) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+html body .supportHelp a:not(.btnPro):not(.btnPro2) {
+  color: var(--gb-yellow) !important;
+  -webkit-text-fill-color: var(--gb-yellow) !important;
+  background-image: none !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 7: cta-section-solutions (#240029 dark purple bg)
+ * ---------------------------------------------------------------- */
+html body .cta-section-solutions h2,
+html body .cta-section-solutions h3,
+html body .cta-section-solutions h4,
+html body .cta-section-solutions p,
+html body .cta-section-solutions li,
+html body .cta-section-solutions label,
+html body .cta-section-solutions .form-check-label {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 8: counterBg — white text + yellow numbers on blue bg
+ * ---------------------------------------------------------------- */
+html body .counterBg {
+  background: linear-gradient(135deg,
+    var(--gb-blue) 0%, #1472aa 100%) !important;
+}
+
+html body .counterBg,
+html body .counterBg p,
+html body .counterBg small,
+html body .counterBg span:not(.counting) {
+  color: rgba(255,255,255,0.9) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.9) !important;
+  background-image: none !important;
+}
+
+html body .counterBg .counting {
+  color: var(--gb-yellow) !important;
+  -webkit-text-fill-color: var(--gb-yellow) !important;
+  background-image: none !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 9: dwp-solution-list (accordion solution cards)
+ * Text is already white via dwp-solution-list ul li { color: #fff }
+ * but the learn-more links need explicit override.
+ * ---------------------------------------------------------------- */
+.dwp-solution-list .sb-content p,
+.dwp-solution-list .sb-content h3,
+.dwp-solution-list li .solution-block h3 {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+.dwp-solution-list .sb-content p a.learn-link {
+  color: rgba(255,255,255,0.85) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
+  background-image: none !important;
+  border-bottom-color: rgba(255,255,255,0.4);
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 10: whatsappApiHeader / hero-bg — charcoal text on light bg
+ * ---------------------------------------------------------------- */
+html body .whatsappApiHeader h1,
+html body .hero-bg h1 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .whatsappApiHeader h2,
+html body .hero-bg h2 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .whatsappApiHeader h3,
+html body .hero-bg h3 {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .whatsappApiHeader p,
+html body .hero-bg p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * FIX 11: Global body text — ensure all p/li/span are readable
+ * Final catch-all: any text not caught by specific rules above.
+ * ---------------------------------------------------------------- */
+html body p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body li {
+  color: var(--text-secondary);
+  -webkit-text-fill-color: var(--text-secondary);
+  background-image: none;
+}
+
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body strong,
+html body b {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+/* ----------------------------------------------------------------
+ * FIX 12: Global <a> — final override (highest specificity)
+ * Kills the transparent gradient link rule in both CSS files.
+ * ---------------------------------------------------------------- */
+html body a {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+}
+
+html body a:hover {
+  color: #1a7fb8 !important;
+  -webkit-text-fill-color: #1a7fb8 !important;
+}
+
+/* Button exceptions — their own colour rules must win */
+html body .btnPro,
+html body .btnPro:hover {
+  -webkit-text-fill-color: #fff !important;
+  color: #fff !important;
+  background-image: none !important;
+}
+
+html body .btn-secondary-brand {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+html body .btn-accent-brand {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+/* Nav link exceptions */
+html body .nav-links {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+  background-image: none !important;
+}
+
+/* Footer link exception */
+html body footer a {
+  color: #a8b2bc !important;
+  -webkit-text-fill-color: #a8b2bc !important;
+  background-image: none !important;
+}
+
+html body footer a:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* Dark section link exceptions */
+html body .supportHelp a:not(.btnPro):not(.btnPro2) {
+  color: var(--gb-yellow) !important;
+  -webkit-text-fill-color: var(--gb-yellow) !important;
+}
+
+/* Nav dropdown link exceptions */
+html body .dropdown a,
+html body .dropdown-level-2 a {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .dropdown a:hover,
+html body .dropdown-level-2 a:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* ----------------------------------------------------------------
+ * FIX 13: Section-specific heading/p colours
+ * ---------------------------------------------------------------- */
+
+/* Light sections — charcoal headings, secondary-grey body */
+html body .sectionGap h2,
+html body .sectionGap h3,
+html body .sectionGap h4 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .sectionGap p,
+html body .sectionGap li {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .aboutPanel h2 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .aboutPanel p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .productPanel h2,
+html body .productPanel h4 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .productPanel p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* missionBox / roadcard / seoContent — light bg cards */
+html body .missionBox h3,
+html body .missionBox h4 {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+html body .missionBox p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .roadcard h3,
+html body .roadcard h4 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .roadcard p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .seoContent h2,
+html body .seoContent h3,
+html body .seoContent h4 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .seoContent p,
+html body .seoContent li {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* step-process / howitWork */
+html body .step-pocess li h4,
+html body .step-pocess li h5 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .step-pocess li p,
+html body .step-pocess li small {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .howitWork h2,
+html body .howitWork h3,
+html body .howitWork .ser-title {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .howitWork p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* supportPanel (blue bg) */
+html body .supportPanel,
+html body .supportPanel h2,
+html body .supportPanel p,
+html body .supportPanel a {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+/* trust section */
+html body .trust small {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* directorDesk */
+html body .directorDesk .content p {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+/* bg-content testimonial inner */
+html body .bg-content h3 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .bg-content p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* testi section (old-style inner page testimonial) */
+html body .testi h2 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .testi p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* education_exprience steps */
+html body .education_exprience p,
+html body .education_exprience h4 {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* ----------------------------------------------------------------
+ * FIX 14: Form elements — readable placeholder and labels
+ * ---------------------------------------------------------------- */
+html body .form-floating label,
+html body .form-label,
+html body .form-check-label {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .form-control,
+html body .form-select {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+}
+
+/* ----------------------------------------------------------------
+ * FIX 15: Specific inner page elements that need white text
+ *  (on dark section backgrounds in service pages)
+ * ---------------------------------------------------------------- */
+
+/* bulkSMSSec boxItem — light bg */
+html body .bulkSMSSec .boxItem h4,
+html body .bulkSMSSec .boxItem h5 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .bulkSMSSec .boxItem p,
+html body .bulkSMSSec .boxItem small {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* accordion headings and bodies */
+html body .accordion-button {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+html body .accordion-button:not(.collapsed) {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+html body .accordion-body {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+html body .accordion-body a {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* table cells */
+html body table td,
+html body table th {
+  color: var(--gb-charcoal);
+  -webkit-text-fill-color: var(--gb-charcoal);
+  background-image: none;
+}
+
+/* engagement table header */
+html body .engagement table th {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+/* whyUsPanel list text */
+html body .whyUsPanel ul li {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* Contact page specific */
+html body .contactPanel h2,
+html body .contactPanel h3 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+/* Legal pages */
+html body .privacy-policy p,
+html body .refund p,
+html body .terms-and-conditions p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
