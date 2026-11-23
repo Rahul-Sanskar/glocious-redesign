@@ -2775,3 +2775,209 @@ footer .mb-3 a:hover {
   width: auto;
   transition: opacity 0.2s ease;
 }
+
+
+/* ================================================================
+ *  INNER PAGE TEXT VISIBILITY FIX
+ *  The global `a { -webkit-text-fill-color: transparent }` rule
+ *  in style.css causes any text wrapped in or near <a> tags to
+ *  render invisible/gradient. This block restores solid colours
+ *  for all body content elements across all pages.
+ * ================================================================ */
+
+/* Body text — always readable dark grey */
+p, li, td, th, figcaption, caption,
+blockquote, dt, dd {
+  color: var(--text-secondary);
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* Headings — always charcoal */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--gb-charcoal);
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* Strong / bold inline text */
+strong, b {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+/* Small / captions */
+small, .small {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* Labels, spans used as body text */
+label,
+span:not([class*="badge"]):not([class*="chip"]):not([class*="btn"]):not(.caret):not(.testi-badge):not(.section-chip):not(.rcs-hero-badge):not(.rcs-step-num):not(.counting) {
+  -webkit-text-fill-color: inherit;
+  background-image: none;
+}
+
+/* ----------------------------------------------------------------
+ *  Section-specific text colour overrides
+ * ---------------------------------------------------------------- */
+
+/* Light / white sections — dark readable text */
+.sectionGap p,
+.sectionGap li,
+.sectionGap h1,
+.sectionGap h2,
+.sectionGap h3,
+.sectionGap h4,
+.sectionGap h5,
+.sectionGap h6,
+.bulkSMSSec p,
+.bulkSMSSec h3,
+.bulkSMSSec h4,
+.servicePanel p,
+.productPanel p,
+.aboutPanel p,
+.whyUsPanel p,
+.whyUsPanel li {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+.sectionGap h2,
+.sectionGap h3,
+.sectionGap h4,
+.bulkSMSSec h2,
+.bulkSMSSec h3 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+/* bg-content testimonial inner text */
+.bg-content h3,
+.bg-content p,
+.bg-content strong {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+/* testi section */
+.testi h2,
+.testi p {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+/* ----------------------------------------------------------------
+ *  Dark-background sections — text must be white
+ * ---------------------------------------------------------------- */
+.supportHelp p,
+.supportHelp li,
+.supportHelp h2,
+.supportHelp h3,
+.supportHelp h4,
+.supportHelp strong {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+/* counterBg */
+.counterBg p,
+.counterBg .counting {
+  -webkit-text-fill-color: inherit !important;
+  background-image: none !important;
+}
+
+/* CTA section with dark/image bg */
+.cta-section-solutions p,
+.cta-section-solutions h2,
+.cta-section-solutions h3,
+.cta-section-solutions li {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+/* directorDesk quote */
+.directorDesk .content p {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+  font-style: italic;
+}
+
+/* ----------------------------------------------------------------
+ *  Inner page hero (whatsappApiHeader / hero-bg)
+ *  Light gradient background — text must be charcoal/dark
+ * ---------------------------------------------------------------- */
+.whatsappApiHeader p,
+.hero-bg p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* ----------------------------------------------------------------
+ *  Fix: <strong> inside <p> inside <a>-influenced zones
+ * ---------------------------------------------------------------- */
+p strong,
+p b,
+li strong,
+li b,
+h2 strong,
+h3 strong,
+h4 strong {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+/* ----------------------------------------------------------------
+ *  Fix the global <a> rule in style.css — it makes ALL <a> text
+ *  transparent gradient. Override with solid blue for body links.
+ * ---------------------------------------------------------------- */
+a {
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  color: var(--gb-blue) !important;
+}
+
+a:hover {
+  -webkit-text-fill-color: #1a7fb8 !important;
+  color: #1a7fb8 !important;
+}
+
+/* Exceptions — buttons must NOT be overridden by the above */
+.btnPro,
+.btnPro:hover,
+.btnPro2,
+.btnPro2:hover,
+.btn-primary-brand,
+.btn-secondary-brand,
+.btn-accent-brand,
+.nav-logo,
+.nav-links,
+.nav-links:hover,
+.dropdown > li > a,
+.dropdown > li > a:hover,
+footer a,
+footer a:hover {
+  /* These are handled by their own specific rules above */
+  background-image: none !important;
+}
+
+/* Keep white text on dark buttons */
+.btnPro {
+  -webkit-text-fill-color: #fff !important;
+  color: #fff !important;
+}
