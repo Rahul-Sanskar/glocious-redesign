@@ -1,0 +1,2493 @@
+/*
+ * ================================================================
+ *  GLOCIOUS INFOTECH — CENTRAL BRAND DESIGN SYSTEM
+ *  Version: 2.0  |  Last updated: 2026-11-11
+ *
+ *  Load order: this file must come BEFORE nav2.css, style.css
+ *  and styleec92.css so its tokens and base rules are available
+ *  to all subsequent stylesheets.
+ *
+ *  Contents:
+ *   1. Google Fonts import (Poppins + Inter)
+ *   2. Design tokens (:root variables)
+ *   3. Global base resets & typography
+ *   4. Link system
+ *   5. Button system (.btn-primary, .btn-secondary, .btn-accent,
+ *                     .btnPro, .btnPro2 rebrand)
+ *   6. Form input system
+ *   7. Badge & chip system
+ *   8. Card base tokens
+ *   9. Section spacing tokens
+ *  10. Utility helpers
+ * ================================================================
+ */
+
+/* ----------------------------------------------------------------
+ * 1. GOOGLE FONTS
+ * ---------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+
+/* ----------------------------------------------------------------
+ * 2. DESIGN TOKENS
+ * ---------------------------------------------------------------- */
+:root {
+  /* --- PRIMARY BRAND COLOURS --- */
+  --gb-blue:        #309DDA;   /* Glocious Blue  — primary interactive */
+  --gb-yellow:      #F4B72B;   /* Glocious Yellow — attention, badges  */
+  --gb-magenta:     #D50069;   /* Glocious Magenta — accent, highlights */
+  --gb-green:       #1F9749;   /* Glocious Green  — success, positive  */
+  --gb-charcoal:    #373A3E;   /* Charcoal Grey  — headings, nav text  */
+  --gb-white:       #FFFFFF;
+
+  /* --- SUPPORTING TINTS --- */
+  --gb-blue-light:    #E7F4FC;
+  --gb-yellow-light:  #FFF8E1;
+  --gb-magenta-light: #FDEBF4;
+  --gb-green-light:   #E8F7ED;
+
+  /* --- BACKGROUNDS --- */
+  --bg-primary:   #FFFFFF;
+  --bg-secondary: #F5F8FB;
+  --bg-blue-tint: #E7F4FC;
+
+  /* --- TEXT --- */
+  --text-primary:   #373A3E;
+  --text-secondary: #66717D;
+  --text-muted:     #9BA3AC;
+  --text-on-dark:   #FFFFFF;
+
+  /* --- BORDERS --- */
+  --border-color:  #E2E8F0;
+  --border-radius: 0.625rem;    /* 10px — standard card/button radius  */
+  --border-radius-lg: 1rem;
+  --border-radius-pill: 50rem;
+
+  /* --- SHADOWS --- */
+  --shadow-xs:  0 1px 3px rgba(55,58,62,0.08);
+  --shadow-sm:  0 2px 8px rgba(55,58,62,0.10);
+  --shadow-md:  0 4px 16px rgba(55,58,62,0.12);
+  --shadow-lg:  0 8px 32px rgba(55,58,62,0.14);
+  --shadow-blue: 0 4px 18px rgba(48,157,218,0.25);
+
+  /* --- BUTTON SIZES --- */
+  --btn-padding-y:  0.65rem;
+  --btn-padding-x:  1.6rem;
+  --btn-font-size:  0.9375rem;
+  --btn-font-weight: 600;
+  --btn-radius:     0.5rem;
+  --btn-transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+
+  /* --- BRAND FONT STACK --- */
+  --font-heading: 'Poppins', 'DM Sans', -apple-system, sans-serif;
+  --font-body:    'Inter', 'DM Sans', -apple-system, sans-serif;
+
+  /* --- SECTION SPACING --- */
+  --section-py:   80px;
+  --section-py-sm: 56px;
+
+  /* --- TRANSITION --- */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
+
+  /* --- LEGACY BRIDGE (keeps existing var() references working) --- */
+  --primary:      #309DDA;    /* was #0D1B2A — now Glocious Blue       */
+  --pink:         #D50069;    /* was #E30086 — now Glocious Magenta    */
+  --secondary:    #309DDA;    /* was #DE003E — now Glocious Blue       */
+  --light-gray:   #F5F8FB;
+  --dark-gray:    #373A3E;
+  --white:        #FFFFFF;
+  --black:        #101010;
+  --royal-blue:   #309DDA;
+  --soft-magenta: #D50069;
+  --slate-gray:   #373A3E;
+  --bright-pink:  #D50069;
+  --navy-blue:    #373A3E;
+  --sky-blue:     #309DDA;
+}
+
+
+/* ----------------------------------------------------------------
+ * 3. GLOBAL BASE — typography, body, headings
+ * ---------------------------------------------------------------- */
+
+/* Font imports from CSS level only on pages that don't already have DM Sans */
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-heading);
+  color: var(--gb-charcoal);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.25rem);  font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 700; }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.9rem);  font-weight: 600; }
+h4 { font-size: clamp(1.1rem, 2vw, 1.4rem);   font-weight: 600; }
+h5 { font-size: 1.15rem; font-weight: 600; }
+h6 { font-size: 1rem;    font-weight: 600; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+p:last-child { margin-bottom: 0; }
+
+strong, b { font-weight: 600; color: var(--text-primary); }
+
+::selection {
+  background: var(--gb-blue);
+  color: #fff;
+}
+
+
+/* ----------------------------------------------------------------
+ * 4. LINK SYSTEM
+ *    Replace the global pink-gradient <a> with clean blue links.
+ *    Components that need the gradient explicitly re-add it.
+ * ---------------------------------------------------------------- */
+a {
+  color: var(--gb-blue);
+  text-decoration: none;
+  -webkit-text-fill-color: var(--gb-blue);
+  background-image: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  transition: color var(--transition-base), -webkit-text-fill-color var(--transition-base);
+}
+
+a:hover {
+  color: #1a7fb8;
+  -webkit-text-fill-color: #1a7fb8;
+  background-image: none;
+  background-position: unset;
+}
+
+
+/* ----------------------------------------------------------------
+ * 5. BUTTON SYSTEM
+ * ---------------------------------------------------------------- */
+
+/* -- Shared button base -- */
+.btn-brand,
+.btnPro,
+.btnPro2,
+.btn-primary-brand,
+.btn-secondary-brand,
+.btn-accent-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-heading);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-radius);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--btn-transition);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-image: none !important;
+}
+
+/* -- PRIMARY: Blue background, white text -- */
+.btn-primary-brand,
+.btnPro {
+  background: var(--gb-blue);
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-color: var(--gb-blue);
+  box-shadow: var(--shadow-blue);
+}
+
+.btn-primary-brand:hover,
+.btnPro:hover,
+.btn-primary-brand:focus,
+.btnPro:focus {
+  background: #1a7fb8;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-color: #1a7fb8;
+  box-shadow: 0 6px 24px rgba(48,157,218,0.35);
+  transform: translateY(-1px);
+}
+
+.btn-primary-brand:active,
+.btnPro:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-blue);
+}
+
+/* -- SECONDARY: White bg, blue border & text -- */
+.btn-secondary-brand {
+  background: #fff;
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  border-color: var(--gb-blue);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-secondary-brand:hover {
+  background: var(--gb-blue-light);
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+/* -- ACCENT: Magenta background, white text -- */
+.btn-accent-brand {
+  background: var(--gb-magenta);
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-color: var(--gb-magenta);
+  box-shadow: 0 4px 18px rgba(213,0,105,0.25);
+}
+
+.btn-accent-brand:hover {
+  background: #b5005a;
+  border-color: #b5005a;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(213,0,105,0.35);
+}
+
+/* -- btnPro2 redesign (arrow-circle CTA button) -- */
+.btnPro2 {
+  background: transparent !important;
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+  box-shadow: none;
+  font-weight: 600;
+  overflow: visible;
+}
+
+.btnPro2 span {
+  background: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--btn-transition);
+  flex-shrink: 0;
+}
+
+.btnPro2:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+.btnPro2:hover span {
+  background: #1a7fb8 !important;
+  transform: translateX(3px);
+}
+
+.btnPro2::before { display: none; }
+
+/* White text variant of btnPro2 (on dark backgrounds) */
+.btnPro2.text-white,
+.btnPro2.text-white:hover {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* CTA section scroll-on state */
+.scroll-on .btnPro {
+  background: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-color: var(--gb-blue) !important;
+}
+
+.scroll-on .btnPro:hover {
+  background: #1a7fb8 !important;
+  border-color: #1a7fb8 !important;
+  color: #fff !important;
+}
+
+/* Banner variant — white bg button */
+.bannerContent-38 .btnPro,
+.whatsappApiHeader .btnPro,
+.hero-bg .btnPro {
+  background: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-color: var(--gb-blue) !important;
+}
+
+.bannerContent-38 .btnPro:hover,
+.whatsappApiHeader .btnPro:hover,
+.hero-bg .btnPro:hover {
+  background: #fff !important;
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  border-color: #fff !important;
+}
+
+/* bg-white helper on buttons (CTA sections) */
+.btnPro.bg-white {
+  background: #fff !important;
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  border-color: #fff !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.btnPro.bg-white:hover {
+  background: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-color: var(--gb-blue) !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * 6. FORM INPUT SYSTEM
+ * ---------------------------------------------------------------- */
+.form-control,
+.form-select {
+  font-family: var(--font-body);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 0.65rem 1rem;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  background-color: #fff;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--gb-blue);
+  box-shadow: 0 0 0 3px rgba(48,157,218,0.15);
+  outline: none;
+}
+
+.form-control::placeholder { color: var(--text-muted); }
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: var(--gb-magenta);
+}
+
+.form-check-input:checked {
+  background-color: var(--gb-blue);
+  border-color: var(--gb-blue);
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 3px rgba(48,157,218,0.2);
+}
+
+
+/* ----------------------------------------------------------------
+ * 7. BADGE & CHIP SYSTEM
+ * ---------------------------------------------------------------- */
+.badge-brand,
+.section-chip,
+.testi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--border-radius-pill);
+  line-height: 1;
+}
+
+/* Blue chip — section labels */
+.section-chip {
+  background: var(--gb-blue-light);
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  border: 1px solid rgba(48,157,218,0.3);
+  margin-bottom: 0.75rem;
+}
+
+/* Magenta chip — testimonials, features */
+.testi-badge {
+  background: var(--gb-magenta-light);
+  color: var(--gb-magenta) !important;
+  -webkit-text-fill-color: var(--gb-magenta) !important;
+  background-image: none !important;
+  border: 1px solid rgba(213,0,105,0.25);
+}
+
+/* Yellow badge */
+.badge-yellow {
+  background: var(--gb-yellow-light);
+  color: #9a6c00 !important;
+  -webkit-text-fill-color: #9a6c00 !important;
+  background-image: none !important;
+  border: 1px solid rgba(244,183,43,0.35);
+}
+
+/* Green badge */
+.badge-green {
+  background: var(--gb-green-light);
+  color: var(--gb-green) !important;
+  -webkit-text-fill-color: var(--gb-green) !important;
+  background-image: none !important;
+  border: 1px solid rgba(31,151,73,0.3);
+}
+
+/* Blue Bootstrap badge override */
+.bg-primary { background-color: var(--gb-blue) !important; }
+.text-primary { color: var(--gb-blue) !important; -webkit-text-fill-color: var(--gb-blue) !important; background-image: none !important; }
+
+
+/* ----------------------------------------------------------------
+ * 8. CARD BASE
+ * ---------------------------------------------------------------- */
+.brand-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.brand-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* Address block cards (footer) */
+.address-block {
+  background: rgba(48,157,218,0.06);
+  border: 1px solid rgba(48,157,218,0.15);
+  border-radius: var(--border-radius-lg);
+  padding: 1.1rem 1.25rem;
+  height: 100%;
+}
+
+.address-block h6 {
+  font-family: var(--font-heading);
+  font-size: 0.85rem !important;
+  font-weight: 700;
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.address-block span {
+  font-size: 0.875rem !important;
+  color: rgba(255,255,255,0.75) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.75) !important;
+  background-image: none !important;
+  line-height: 1.65;
+}
+
+/* Light address block (non-footer use) */
+.address-block.light span {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * 9. SECTION SPACING & BACKGROUND HELPERS
+ * ---------------------------------------------------------------- */
+.section-bg-white    { background-color: var(--bg-primary); }
+.section-bg-light    { background-color: var(--bg-secondary); }
+.section-bg-blue     { background-color: var(--gb-blue-light); }
+.section-bg-charcoal { background-color: var(--gb-charcoal); color: #fff; }
+
+.section-divider {
+  height: 4px;
+  background: linear-gradient(90deg, var(--gb-blue) 0%, var(--gb-magenta) 50%, var(--gb-yellow) 100%);
+  border: none;
+  border-radius: 2px;
+  margin: 0;
+  opacity: 1;
+}
+
+
+/* ----------------------------------------------------------------
+ * 10. UTILITY HELPERS
+ * ---------------------------------------------------------------- */
+.text-gb-blue    { color: var(--gb-blue)    !important; -webkit-text-fill-color: var(--gb-blue)    !important; background-image: none !important; }
+.text-gb-magenta { color: var(--gb-magenta) !important; -webkit-text-fill-color: var(--gb-magenta) !important; background-image: none !important; }
+.text-gb-yellow  { color: var(--gb-yellow)  !important; -webkit-text-fill-color: var(--gb-yellow)  !important; background-image: none !important; }
+.text-gb-green   { color: var(--gb-green)   !important; -webkit-text-fill-color: var(--gb-green)   !important; background-image: none !important; }
+.text-gb-charcoal{ color: var(--gb-charcoal)!important; -webkit-text-fill-color: var(--gb-charcoal)!important; background-image: none !important; }
+.text-muted-brand{ color: var(--text-secondary)!important; -webkit-text-fill-color: var(--text-secondary)!important; background-image: none !important; }
+
+.fw-300 { font-weight: 300; }
+.fw-400 { font-weight: 400; }
+.fw-500 { font-weight: 500; }
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+
+/* Smooth focus outline for accessibility */
+:focus-visible {
+  outline: 2px solid var(--gb-blue);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Smooth image transitions */
+img { transition: opacity 0.3s ease; display: inline-block; max-width: 100%; }
+
+/* Scroll reveal utilities (re-export for consistency) */
+.reveal        { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(.22,.61,.36,1), transform 0.6s cubic-bezier(.22,.61,.36,1); }
+.reveal.visible{ opacity: 1; transform: none; }
+.reveal-left   { opacity: 0; transform: translateX(-24px); transition: opacity 0.6s cubic-bezier(.22,.61,.36,1), transform 0.6s cubic-bezier(.22,.61,.36,1); }
+.reveal-right  { opacity: 0; transform: translateX(24px);  transition: opacity 0.6s cubic-bezier(.22,.61,.36,1), transform 0.6s cubic-bezier(.22,.61,.36,1); }
+.reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* Star icons — yellow */
+.ri-star-fill, .ri-star-half-fill {
+  color: var(--gb-yellow) !important;
+  -webkit-text-fill-color: var(--gb-yellow) !important;
+  background-image: none !important;
+}
+
+/* WhatsApp float button — keep as-is */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+
+/* ================================================================
+ *  BRAND SYSTEM OVERRIDES  —  Tasks 4-7
+ *  Applied after nav2.css / style.css / styleec92.css so these
+ *  rules win without requiring excessive !important use.
+ *  Sections: Nav · Sections · Cards · Counters · Testimonials ·
+ *            Footer · Typography cleanup
+ * ================================================================ */
+
+
+/* ----------------------------------------------------------------
+ *  TASK 4 — NAVIGATION & HEADER
+ * ---------------------------------------------------------------- */
+
+/* Shared nav base */
+.navigation,
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 12px rgba(55,58,62,0.07);
+}
+
+/* Nav links — Charcoal, clean (no gradient on idle) */
+.nav-links {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem !important;
+  font-weight: 500;
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+  letter-spacing: 0.01em;
+  padding: 0.4rem 0;
+  transition: color 0.2s ease;
+}
+
+/* Active / hover — Glocious Blue */
+.nav-links:hover,
+.nav-item.active > .nav-links {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+.nav-links .caret { color: inherit; -webkit-text-fill-color: inherit; }
+
+/* Logo */
+.nav-logo img { height: 46px; }
+
+/* Scroll-on sticky nav */
+.scroll-on {
+  background: rgba(255,255,255,0.97) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 20px rgba(55,58,62,0.10) !important;
+}
+
+.scroll-on .nav-links {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+.scroll-on .nav-links:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* Dropdown menus */
+.dropdown,
+.dropdown-level-2,
+.dropdown-level-3 {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 32px rgba(55,58,62,0.12);
+  padding: 0.5rem;
+}
+
+.dropdown-level-2 {
+  background: var(--bg-secondary);
+}
+
+/* Dropdown links */
+.dropdown > li > a,
+.dropdown-level-2 > li > a,
+.dropdown-level-3 > li > a {
+  font-family: var(--font-body);
+  font-size: 0.875rem !important;
+  font-weight: 500;
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+  border-radius: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdown > li > a span,
+.dropdown-level-2 > li > a span {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+  font-size: 0.75rem;
+}
+
+.dropdown > li > a:hover,
+.dropdown-level-2 > li > a:hover,
+.dropdown-level-3 > li > a:hover {
+  background: var(--gb-blue-light);
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+/* Dropdown has-children arrow icon */
+.dropdown .has-children > a::after,
+.dropdown-level-2 .has-children > a::after {
+  color: var(--text-secondary);
+  -webkit-text-fill-color: var(--text-secondary);
+}
+
+/* Mobile nav drawer */
+@media (max-width: 991px) {
+  .nav-menu { background: #fff; }
+  .nav-links {
+    color: var(--gb-charcoal) !important;
+    -webkit-text-fill-color: var(--gb-charcoal) !important;
+    background-image: none !important;
+  }
+  .nav-links:hover {
+    color: var(--gb-blue) !important;
+    -webkit-text-fill-color: var(--gb-blue) !important;
+  }
+  .nav-toggle {
+    color: var(--gb-charcoal) !important;
+    border-color: var(--border-color) !important;
+  }
+  .nav-close-btn {
+    background: var(--gb-blue) !important;
+    color: #fff !important;
+  }
+}
+
+/* Top announcement bar */
+.topHeader {
+  background: var(--gb-charcoal) !important;
+  color: #fff;
+}
+
+.topHeader a {
+  color: var(--gb-yellow) !important;
+  -webkit-text-fill-color: var(--gb-yellow) !important;
+  background-image: none !important;
+  font-weight: 600;
+}
+
+/* whyUsPanel arrow bullets — blue */
+.whyUsPanel ul li::before {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+
+/* ----------------------------------------------------------------
+ *  TASK 5 — SECTION BACKGROUNDS & STYLING
+ *  Philosophy: white dominant, light tints for variety,
+ *  NO full dark-navy backgrounds on body sections.
+ * ---------------------------------------------------------------- */
+
+/* -- ABOUT PANEL -- */
+.aboutPanel {
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutPanel::before {
+  background: radial-gradient(ellipse at top right,
+    rgba(48,157,218,0.08) 0%, transparent 65%) !important;
+}
+
+.aboutPanel::after {
+  background: radial-gradient(ellipse at bottom left,
+    rgba(31,151,73,0.06) 0%, transparent 65%) !important;
+}
+
+.aboutPanel h2 {
+  color: var(--gb-charcoal) !important;
+  font-family: var(--font-heading);
+}
+
+.aboutPanel p {
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+}
+
+.aboutPanel .col-12 > p {
+  color: var(--text-secondary) !important;
+}
+
+/* About deco dots — brand blue & green */
+.about-deco-dot.d1 { background: var(--gb-blue)    !important; }
+.about-deco-dot.d2 { background: var(--gb-green)   !important; opacity: 0.25 !important; }
+.about-deco-dot.d3 { background: var(--gb-magenta) !important; }
+
+/* -- SERVICES PANEL -- light background, white cards on subtle blue tint */
+.servicePanel {
+  background: var(--bg-secondary) !important;
+  position: relative;
+}
+
+.servicePanel::before {
+  /* remove the dark overlay */
+  display: none !important;
+}
+
+/* Section heading on light bg — charcoal */
+.servicePanel h2 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  font-family: var(--font-heading);
+}
+
+.servicePanel > .container > .row > [class*="col"] h2,
+.servicePanel > .container > .row > [class*="col"] p {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+}
+
+.servicePanel > .container > .row > [class*="col"] p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+}
+
+/* Top accent bar for Services section */
+.servicePanel::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--gb-blue) 0%,
+    var(--gb-magenta) 50%,
+    var(--gb-yellow) 100%);
+  pointer-events: none;
+}
+
+/* -- INDUSTRIES / PRODUCT PANEL -- */
+.productPanel {
+  background: #fff !important;
+  position: relative;
+}
+
+.productPanel::before {
+  background: linear-gradient(90deg,
+    var(--gb-blue) 0%,
+    var(--gb-magenta) 50%,
+    var(--gb-yellow) 100%) !important;
+  height: 3px !important;
+}
+
+.productPanel h2 {
+  color: var(--gb-charcoal) !important;
+  font-family: var(--font-heading);
+}
+
+/* Industry tab pills — active = blue */
+.cSlidernav .slick-track .is-active {
+  background: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.cSlidernav {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* -- TESTIMONIALS / CLIENT PANEL -- light card on subtle blue bg */
+.clientPanel2 {
+  background: var(--bg-secondary) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Replace dark orbs with soft blue radials */
+.clientPanel2::before {
+  background: radial-gradient(ellipse at 15% 50%,
+    rgba(48,157,218,0.10) 0%, transparent 60%) !important;
+  width: 100% !important; height: 100% !important;
+  left: 0 !important; top: 0 !important;
+  transform: none !important; border-radius: 0 !important;
+}
+
+.clientPanel2::after {
+  background: radial-gradient(ellipse at 85% 30%,
+    rgba(31,151,73,0.07) 0%, transparent 55%) !important;
+  width: 100% !important; height: 100% !important;
+  left: 0 !important; top: 0 !important;
+  transform: none !important;
+}
+
+/* Testi header text — charcoal on light bg */
+.testi-header h3 {
+  color: var(--gb-charcoal) !important;
+  font-family: var(--font-heading);
+}
+
+.testi-header p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+}
+
+.testi-overall-rating span {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+}
+
+/* -- SECTION GAP -- white base */
+.sectionGap { background: #fff; }
+
+/* Logo / trusted-by strip */
+.sectionGap .logoPanel {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color);
+  box-shadow: none !important;
+}
+
+.sectionGap .logoPanel h4 {
+  color: var(--gb-charcoal) !important;
+  font-family: var(--font-heading);
+}
+
+/* -- SUPPORT / CTA SECTION -- keep dark for contrast, use brand blue */
+.supportHelp,
+.sectionGap .supportHelp {
+  background: linear-gradient(135deg,
+    var(--gb-charcoal) 0%,
+    #1e2328 100%) !important;
+  border-radius: 1.25rem;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.supportHelp::after {
+  background: radial-gradient(ellipse at center,
+    rgba(48,157,218,0.18) 0%, transparent 65%) !important;
+  pointer-events: none;
+}
+
+.supportHelp h2 {
+  color: #fff !important;
+  font-family: var(--font-heading);
+}
+
+.supportHelp p {
+  color: rgba(255,255,255,0.75) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.75) !important;
+}
+
+/* -- FOOTER -- charcoal bg (lighter than the old #2e393e, still dark) */
+footer {
+  background-color: #22262b !important;
+  color: #c8ced4;
+}
+
+footer h2, footer h3, footer h4 {
+  font-family: var(--font-heading);
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+footer .foot-links h4 {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+  font-size: 0.9375rem !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+footer .foot-links li a,
+footer a {
+  color: #a8b2bc !important;
+  -webkit-text-fill-color: #a8b2bc !important;
+  background-image: none !important;
+  font-size: 0.875rem !important;
+}
+
+footer .foot-links li a:hover,
+footer a:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+footer .foot-links li a::before {
+  background-color: var(--gb-blue) !important;
+  width: 4px; height: 4px;
+}
+
+footer .foot-links .bottom-foot span {
+  color: #a8b2bc !important;
+  -webkit-text-fill-color: #a8b2bc !important;
+  background-image: none !important;
+  font-size: 0.875rem !important;
+  align-items: flex-start;
+}
+
+footer .foot-links .bottom-foot span i {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+footer hr { border-color: rgba(255,255,255,0.08) !important; opacity: 1; }
+
+footer small,
+footer .pt-3 small {
+  color: #6b7784 !important;
+  -webkit-text-fill-color: #6b7784 !important;
+  background-image: none !important;
+}
+
+footer ul a {
+  color: #a8b2bc !important;
+  -webkit-text-fill-color: #a8b2bc !important;
+  background-image: none !important;
+}
+
+footer ul a:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* Social icon links in footer */
+footer .contactsocial a {
+  color: #a8b2bc !important;
+  -webkit-text-fill-color: #a8b2bc !important;
+  background-image: none !important;
+  font-size: 1.3rem !important;
+  transition: color 0.2s ease;
+}
+
+footer .contactsocial a:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* Inner page hero backgrounds — keep bg image, clean text */
+.whatsappApiHeader,
+.hero-bg {
+  background-color: var(--bg-secondary);
+}
+
+.whatsappApiHeader h1,
+.hero-bg h1 {
+  font-family: var(--font-heading);
+  color: var(--gb-charcoal) !important;
+  font-weight: 800;
+}
+
+.whatsappApiHeader h3,
+.hero-bg h3 {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  font-family: var(--font-body);
+}
+
+
+/* ----------------------------------------------------------------
+ *  TASK 6 — CARDS, COUNTERS, TESTIMONIALS, RCS FEATURES
+ * ---------------------------------------------------------------- */
+
+/* -- SERVICE CARDS -- clean white, blue accent on hover */
+.serviceBox {
+  background: #fff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 2px 12px rgba(48,157,218,0.06) !important;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease !important;
+}
+
+.serviceBox:hover {
+  border-color: var(--gb-blue) !important;
+  box-shadow: 0 8px 32px rgba(48,157,218,0.14) !important;
+  transform: translateY(-5px) !important;
+}
+
+.serviceBox::after {
+  background: linear-gradient(0deg,
+    rgba(48,157,218,0.08) 0%, transparent 100%) !important;
+}
+
+.serviceBox h4 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+  font-family: var(--font-heading);
+}
+
+.serviceBox:hover h4 {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+.serviceBox small {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+  font-style: normal !important;
+  font-weight: 400;
+}
+
+.serviceBox p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+.serviceBox a {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  font-weight: 600;
+  font-size: 0.875rem !important;
+}
+
+.serviceBox a:hover {
+  color: #1a7fb8 !important;
+  -webkit-text-fill-color: #1a7fb8 !important;
+}
+
+/* -- COUNTER BG -- Glocious Blue */
+.counterBg {
+  background: linear-gradient(135deg,
+    var(--gb-blue) 0%, #1a7fb8 100%) !important;
+  background-image: linear-gradient(135deg,
+    var(--gb-blue) 0%, #1a7fb8 100%) !important;
+  border-radius: 1rem;
+}
+
+.counterBg .itemList .counting {
+  color: var(--gb-yellow) !important;
+  -webkit-text-fill-color: var(--gb-yellow) !important;
+  background-image: none !important;
+  font-family: var(--font-heading);
+  font-weight: 800;
+}
+
+.counterBg .itemList p {
+  color: rgba(255,255,255,0.85) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
+  background-image: none !important;
+  font-family: var(--font-body);
+}
+
+/* -- TESTIMONIAL CARDS -- white card on light bg */
+.testimonialMain {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.testi-card {
+  background: #fff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 2px 12px rgba(55,58,62,0.07) !important;
+  backdrop-filter: none !important;
+}
+
+.testi-card:hover {
+  box-shadow: 0 8px 32px rgba(48,157,218,0.14) !important;
+  border-color: var(--gb-blue) !important;
+  background: #fff !important;
+}
+
+.testi-card.featured {
+  background: var(--gb-blue-light) !important;
+  border-color: rgba(48,157,218,0.3) !important;
+}
+
+.testi-card-info h6 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+  font-family: var(--font-heading);
+}
+
+.testi-card-info small {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+.testi-card-stars i,
+.review-stars i,
+.stars-row i {
+  color: var(--gb-yellow) !important;
+  -webkit-text-fill-color: var(--gb-yellow) !important;
+  background-image: none !important;
+}
+
+.testi-card-quote {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+  font-style: normal !important;
+  font-family: var(--font-body);
+  font-size: 0.9rem !important;
+}
+
+.testi-card-quote::before {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* Avatar pulse — blue */
+.testi-card:hover .testi-card-avatar {
+  animation: pulseRingBlue 1.5s ease !important;
+}
+
+@keyframes pulseRingBlue {
+  0%   { box-shadow: 0 0 0 0 rgba(48,157,218,0.4); }
+  70%  { box-shadow: 0 0 0 14px rgba(48,157,218,0); }
+  100% { box-shadow: 0 0 0 0 rgba(48,157,218,0); }
+}
+
+.testi-card-avatar {
+  border-color: var(--gb-blue) !important;
+}
+
+.testi-company-logo {
+  border-top-color: var(--border-color) !important;
+}
+
+.testi-company-logo img {
+  filter: none !important;
+  opacity: 0.75 !important;
+}
+
+/* Testi badge */
+.testi-badge {
+  background: var(--gb-magenta-light) !important;
+  color: var(--gb-magenta) !important;
+  -webkit-text-fill-color: var(--gb-magenta) !important;
+  background-image: none !important;
+  border-color: rgba(213,0,105,0.25) !important;
+}
+
+/* -- SECTION CHIPS -- */
+.section-chip {
+  background: var(--gb-blue-light) !important;
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  border-color: rgba(48,157,218,0.3) !important;
+}
+
+/* Section chip on the dark CTA bg */
+.supportHelp .section-chip {
+  background: rgba(48,157,218,0.2) !important;
+  border-color: rgba(48,157,218,0.4) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* -- RCS FEATURE CARDS (rcs-messaging page) -- */
+.rcs-feature-card {
+  background: #fff !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 2px 12px rgba(55,58,62,0.07) !important;
+}
+
+.rcs-feature-card:hover {
+  box-shadow: 0 8px 32px rgba(48,157,218,0.14) !important;
+  border-color: var(--gb-blue) !important;
+}
+
+.rcs-feature-card .icon-wrap {
+  background: linear-gradient(135deg, var(--gb-blue) 0%, #1a7fb8 100%) !important;
+}
+
+.rcs-feature-card h5 {
+  color: var(--gb-charcoal) !important;
+  font-family: var(--font-heading);
+}
+
+.rcs-feature-card p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+}
+
+/* RCS use cards */
+.rcs-use-card {
+  background: var(--bg-secondary) !important;
+  border-left-color: var(--gb-blue) !important;
+}
+
+.rcs-use-card h6 {
+  color: var(--gb-charcoal) !important;
+  font-family: var(--font-heading);
+}
+
+.rcs-use-card p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+}
+
+/* RCS use cases section (was dark navy) */
+.rcs-use-card ~ .rcs-use-card,
+section[style*="background: #0D1B2A"],
+section[style*="background:#0D1B2A"] {
+  background: var(--bg-secondary) !important;
+}
+
+/* RCS hero badge */
+.rcs-hero-badge {
+  background: var(--gb-blue) !important;
+  background-image: none !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* RCS step numbers */
+.rcs-step-num {
+  background: var(--gb-blue) !important;
+  background-image: none !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* RCS FAQ */
+.rcs-faq .accordion-button {
+  color: var(--gb-charcoal) !important;
+  font-family: var(--font-heading);
+}
+
+.rcs-faq .accordion-button:not(.collapsed) {
+  background: var(--gb-blue-light) !important;
+  color: var(--gb-blue) !important;
+}
+
+/* RCS vs table header */
+.rcs-vs-table th {
+  background: var(--gb-charcoal) !important;
+}
+
+.rcs-vs-table th:last-child {
+  background: var(--gb-blue) !important;
+}
+
+.rcs-vs-table .check {
+  color: var(--gb-green) !important;
+  -webkit-text-fill-color: var(--gb-green) !important;
+  background-image: none !important;
+}
+
+.rcs-vs-table .cross {
+  color: #e53e3e !important;
+  -webkit-text-fill-color: #e53e3e !important;
+  background-image: none !important;
+}
+
+/* -- INDUSTRIES SLIDER (cSlider active) -- */
+.cSlidernav .slick-track .is-active {
+  background: var(--gb-blue) !important;
+}
+
+/* -- whyUsPanel bullets -- */
+.whyUsPanel ul li::before {
+  color: var(--gb-blue);
+  -webkit-text-fill-color: var(--gb-blue);
+}
+
+/* -- howitWork, trust, directorDesk -- */
+.trust h5 {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+/* -- QuotePanel border glow — blue-magenta -- */
+.quotePanel {
+  --gradient-border: conic-gradient(from var(--border-angle, 0turn),
+    transparent 15%, var(--gb-blue), var(--gb-magenta) 90%, transparent);
+}
+
+.quotePanel i {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+/* -- inline Bootstrap badge override -- */
+.badge.bg-primary,
+span.badge[class*="bg-primary"] {
+  background-color: var(--gb-blue) !important;
+  color: #fff !important;
+}
+
+/* -- seoContent card -- */
+.seoContent {
+  border-top: 3px solid var(--gb-blue);
+}
+
+/* -- certficate/ISO hover ring -- */
+.iso-hover > a:focus-visible {
+  outline-color: var(--gb-blue);
+}
+
+
+/* ----------------------------------------------------------------
+ *  TASK 7 — TYPOGRAPHY CLEANUP & FONT UPGRADES
+ * ---------------------------------------------------------------- */
+
+/* Apply Poppins to ALL headings site-wide */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-heading) !important;
+  color: var(--gb-charcoal);
+}
+
+/* Apply Inter to body text */
+body,
+p,
+li,
+span,
+td, th,
+input, textarea, select {
+  font-family: var(--font-body);
+}
+
+/* Clean up the global !important font block from previous session:
+   We re-declare the most important sizes here without the cascade mess */
+html { font-size: 16px !important; }
+
+body { font-size: 1rem; line-height: 1.78; color: var(--text-primary); }
+
+h1 { font-size: clamp(1.9rem, 5vw, 3.25rem) !important; font-weight: 800 !important; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem)  !important; font-weight: 700 !important; }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.9rem)  !important; font-weight: 600 !important; }
+h4 { font-size: clamp(1.1rem, 2vw, 1.4rem)    !important; font-weight: 600 !important; }
+h5 { font-size: 1.15rem !important; font-weight: 600 !important; }
+h6 { font-size: 1rem    !important; font-weight: 600 !important; }
+
+p  { font-size: 1rem    !important; line-height: 1.78; }
+
+/* Hero headings — slightly larger */
+.bannerContent-38 h1  { font-size: clamp(2rem, 5.5vw, 3.5rem) !important; font-weight: 800 !important; }
+.bannerContent-38 h3  { font-size: clamp(1rem, 2vw, 1.25rem)  !important; font-weight: 300 !important; color: rgba(255,255,255,0.88) !important; -webkit-text-fill-color: rgba(255,255,255,0.88) !important; }
+.whatsappApiHeader h1 { font-size: clamp(1.75rem, 4vw, 2.75rem) !important; font-weight: 800 !important; }
+.whatsappApiHeader h3 { font-size: clamp(1rem, 2vw, 1.2rem)    !important; font-weight: 300 !important; }
+
+/* Nav */
+.nav-links         { font-size: 0.9375rem !important; }
+.dropdown > li > a { font-size: 0.875rem  !important; }
+
+/* Buttons */
+.btnPro  { font-size: 0.9375rem !important; font-weight: 600 !important; }
+.btnPro2 { font-size: 0.9375rem !important; font-weight: 600 !important; }
+
+/* Counter */
+.counterBg .itemList .counting { font-size: clamp(2rem, 4vw, 2.75rem) !important; }
+.counterBg .itemList p          { font-size: 0.9rem !important; }
+
+/* Footer */
+footer .foot-links h4 { font-size: 0.8125rem !important; }
+footer a, footer .foot-links li a, footer .foot-links .bottom-foot span { font-size: 0.875rem !important; }
+
+/* Misc */
+.serviceBox h4    { font-size: 1.1rem  !important; }
+.serviceBox small { font-size: 0.8125rem !important; }
+.serviceBox p     { font-size: 0.875rem !important; }
+.testi-card-quote { font-size: 0.9rem  !important; }
+.testi-card-info h6   { font-size: 0.9rem !important; }
+.testi-card-info small{ font-size: 0.75rem !important; }
+.section-chip, .testi-badge { font-size: 0.7rem !important; }
+.address-block h6  { font-size: 0.75rem !important; }
+.address-block span{ font-size: 0.875rem !important; }
+
+/* Responsive typography — clean, single source */
+@media (max-width: 768px) {
+  html   { font-size: 15px !important; }
+  h1 { font-size: clamp(1.6rem, 7vw, 2.25rem) !important; }
+  h2 { font-size: clamp(1.4rem, 5vw, 1.9rem)  !important; }
+  h3 { font-size: clamp(1.15rem, 4vw, 1.5rem) !important; }
+  .bannerContent-38 h1 { font-size: clamp(1.6rem, 7vw, 2.25rem) !important; }
+  .counterBg .itemList .counting { font-size: 2rem !important; }
+}
+
+@media (max-width: 480px) {
+  html   { font-size: 15px !important; }
+  h1 { font-size: 1.75rem !important; }
+  h2 { font-size: 1.5rem  !important; }
+  h3 { font-size: 1.25rem !important; }
+  h4 { font-size: 1.1rem  !important; }
+  p  { font-size: 0.9375rem !important; }
+  .btnPro, .btnPro2 { font-size: 0.875rem !important; }
+}
+
+
+/* ================================================================
+ *  TASK 8 — FINAL VERIFICATION FIXES
+ *  Catch-all overrides for any old-brand colour references that
+ *  the cascade hasn't fully resolved.
+ * ================================================================ */
+
+/* 1. Global <a> gradient — was #E30086→#ff6bb3→#0D1B2A
+      Brand replaces with clean blue. All a: rules are in brand.css
+      base layer already; this is a belt-and-suspenders guard. */
+a:not(.btnPro):not(.btnPro2):not(.btn-primary-brand):not(.btn-secondary-brand):not(.btn-accent-brand):not([class*="nav-"]):not(.nav-logo):not(.whatsapp) {
+  color: var(--gb-blue);
+  -webkit-text-fill-color: var(--gb-blue);
+  background-image: none;
+  -webkit-background-clip: unset;
+}
+
+a:not(.btnPro):not(.btnPro2):not(.btn-primary-brand):not(.btn-secondary-brand):not(.btn-accent-brand):not([class*="nav-"]):not(.nav-logo):not(.whatsapp):hover {
+  color: #1a7fb8;
+  -webkit-text-fill-color: #1a7fb8;
+}
+
+/* 2. Nav hover gradient cleanup — nav2.css uses #E30086 on hover
+      brand.css nav rules above already handle this but explicit guard */
+.nav-links:hover,
+.scroll-on .nav-links:hover {
+  background-image: none !important;
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* 3. Dropdown link hover — nav2.css uses old pink gradient */
+.dropdown > li > a:hover,
+.dropdown-level-2 > li > a:hover,
+.dropdown-level-3 > li > a:hover {
+  background-image: none !important;
+  background-color: var(--gb-blue-light) !important;
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* 4. Footer link hover — was #fffb00 yellow */
+footer a:hover,
+footer .foot-links li a:hover,
+footer .foot-links .bottom-foot a:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+/* 5. headerMenu hover yellow — legacy (display:none, but clean anyway) */
+.headerMenu a:hover {
+  color: var(--gb-yellow) !important;
+  -webkit-text-fill-color: var(--gb-yellow) !important;
+  background-image: none !important;
+}
+
+/* 6. Industries tab active — was gold #e8bd75 */
+.cSlidernav .slick-track .is-active {
+  background: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: none !important;
+}
+
+/* 7. whyUsPanel arrow — was var(--bright-pink) which is now magenta; use blue */
+.whyUsPanel ul li::before {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* 8. .scroll-on CTA button */
+.scroll-on .btnPro,
+.scroll-on .nav-cta .btnPro {
+  background: var(--gb-blue) !important;
+  border-color: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* 9. serviceBox h4 on hover — was var(--bright-pink) = magenta */
+.serviceBox:hover h4 {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+/* 10. Inner page service cards — same fix */
+.servicePanel .serviceBox:hover h4,
+.servicePanel .serviceBox a {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+/* 11. whyUsPanel bullet arrows (inner pages) */
+.whyUsPanel ul li::before {
+  color: var(--gb-blue);
+  -webkit-text-fill-color: var(--gb-blue);
+  background-image: none;
+}
+
+/* 12. copy.js / action links */
+.learn-link,
+.solution-block .sb-content p a.learn-link {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* 13. Text link overrides in dark containers — keep white */
+.supportHelp a,
+.counterBg a,
+.clientPanel2 a,
+footer a {
+  color: inherit;
+}
+
+/* 14. OG/twitter image isn't a visual concern — just clean up nav-cta */
+.nav-cta .btnPro {
+  background: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  border-color: var(--gb-blue) !important;
+}
+
+/* 15. Mobile nav toggle */
+@media (max-width: 991px) {
+  .nav-toggle {
+    color: var(--gb-charcoal) !important;
+    border-color: var(--border-color) !important;
+  }
+}
+
+/* 16. Scroll-on nav text */
+.scroll-on .nav-links,
+.scroll-on .nav-toggle {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+/* 17. Address-block text on dark footer background */
+footer .address-block h6 {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+footer .address-block span {
+  color: rgba(200,206,212,0.9) !important;
+  -webkit-text-fill-color: rgba(200,206,212,0.9) !important;
+  background-image: none !important;
+}
+
+/* 18. topHeader close icon */
+.topHeader .ri-close-fill {
+  color: rgba(255,255,255,0.6) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.6) !important;
+  background-image: none !important;
+  cursor: pointer;
+}
+
+/* 19. Breadcrumb / legal page body text */
+.privacy-policy p, .refund p, .terms-and-conditions p,
+.seoContent p, .seoContent li {
+  color: var(--text-secondary);
+}
+
+/* 20. Inner page hero — ensure heading is charcoal (bg is light) */
+.whatsappApiHeader h1,
+.hero-bg h1 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+.whatsappApiHeader h3,
+.hero-bg h3 {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* 21. CTA section text on dark charcoal bg */
+.supportHelp h2,
+.supportHelp h3,
+.supportHelp p {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  background-image: none;
+}
+
+/* 22. Industry tab nav — ensure clean text on cSlidernav */
+.cSlidernav .cSlider__item {
+  color: var(--gb-charcoal);
+  -webkit-text-fill-color: var(--gb-charcoal);
+  background-image: none;
+}
+
+/* 23. Industry single slide white bg text */
+.cSlidersingle .cSlider__item {
+  background: #fff !important;
+}
+
+.cSlidersingle .cSlider__item h4,
+.cSlidersingle .cSlider__item p {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+}
+
+/* 24. Solution list items — earthy colours kept (branded content area) */
+
+/* 25. Trust items */
+.trust h5 {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+/* 26. Remixicon colour links in icon wrappers */
+.rcs-feature-card .icon-wrap i,
+.rcs-step-num i {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+/* 27. Bootstrap success/check icons */
+.ri-checkbox-circle-fill.text-success {
+  color: var(--gb-green) !important;
+  -webkit-text-fill-color: var(--gb-green) !important;
+  background-image: none !important;
+}
+
+/* 28. QuotePanel i icon */
+.quotePanel i {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+/* 29. aboutHeader (About Us page hero) — keep white text, it's on photo bg */
+.aboutHeader h1,
+.aboutHeader h2 {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-image: none !important;
+}
+
+/* 30. Contact page itemList heading */
+.contactDetails .itemList h5 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+.contactDetails .itemList span {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  background-image: none !important;
+}
+
+/* ================================================================
+ *  FINAL: Global non-link <i> icons — not coloured by gradient
+ * ================================================================ */
+i.ri-map-pin-line,
+i.ri-map-pin-2-fill,
+i.ri-phone-line,
+i.ri-mail-line {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+}
+
+/* Social icons in footer */
+footer i[class^="ri-"],
+footer i[class*=" ri-"] {
+  color: inherit;
+  -webkit-text-fill-color: inherit;
+  background-image: none;
+}
+
+
+/* ================================================================
+ *  RICHER COLOUR PATTERN — Consistent brand colour usage
+ *  Added across: service cards, sections, chips, counters,
+ *  testimonials, footer, nav, industries, top bar, icons
+ * ================================================================ */
+
+
+/* ----------------------------------------------------------------
+ * TOP ANNOUNCEMENT BAR — Blue gradient
+ * ---------------------------------------------------------------- */
+.topHeader {
+  background: linear-gradient(90deg, var(--gb-charcoal) 0%, #1e2328 60%, var(--gb-charcoal) 100%) !important;
+  border-bottom: 2px solid var(--gb-blue);
+  display: block !important;
+}
+
+.topHeader .container { position: relative; }
+
+.topHeader::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg,
+    var(--gb-blue) 0%,
+    var(--gb-magenta) 33%,
+    var(--gb-yellow) 66%,
+    var(--gb-green) 100%);
+}
+
+
+/* ----------------------------------------------------------------
+ * NAV — Blue bottom accent bar on scroll
+ * ---------------------------------------------------------------- */
+.scroll-on::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg,
+    var(--gb-blue) 0%,
+    var(--gb-magenta) 50%,
+    var(--gb-yellow) 100%);
+}
+
+.navigation { position: relative; }
+
+/* Active nav item indicator dot */
+.nav-item.active > .nav-links::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--gb-blue);
+  border-radius: 1px;
+  margin-top: 2px;
+}
+
+
+/* ----------------------------------------------------------------
+ * ABOUT SECTION — Coloured left border on heading
+ * ---------------------------------------------------------------- */
+.aboutPanel h2 {
+  border-left: 4px solid var(--gb-blue);
+  padding-left: 1rem;
+}
+
+/* Counter cards — Yellow dot accent per item */
+.counterBg .itemList img {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* Each stat row gets a coloured bottom line */
+.counterBg .itemList:nth-child(1) { border-bottom: 1px solid rgba(244,183,43,0.3); padding-bottom: 1rem; }
+.counterBg .itemList:nth-child(2) { border-bottom: 1px solid rgba(244,183,43,0.3); padding-bottom: 1rem; }
+.counterBg .itemList:last-child   { border-bottom: none; }
+
+
+/* ----------------------------------------------------------------
+ * SERVICE CARDS — Each card gets a unique colour top border
+ * ---------------------------------------------------------------- */
+
+/* Coloured top border stripe per card position */
+.serviceBox {
+  border-top: 3px solid var(--gb-blue) !important;
+  border-left: 1px solid var(--border-color) !important;
+  border-right: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Per-child colour cycling using the 4 brand colours */
+.service-slider .slick-slide:nth-child(7n+1) .serviceBox,
+.service-slider .serviceBox:nth-child(7n+1) { border-top-color: var(--gb-blue)    !important; }
+.service-slider .slick-slide:nth-child(7n+2) .serviceBox,
+.service-slider .serviceBox:nth-child(7n+2) { border-top-color: var(--gb-magenta) !important; }
+.service-slider .slick-slide:nth-child(7n+3) .serviceBox,
+.service-slider .serviceBox:nth-child(7n+3) { border-top-color: var(--gb-green)   !important; }
+.service-slider .slick-slide:nth-child(7n+4) .serviceBox,
+.service-slider .serviceBox:nth-child(7n+4) { border-top-color: var(--gb-yellow)  !important; }
+.service-slider .slick-slide:nth-child(7n+5) .serviceBox,
+.service-slider .serviceBox:nth-child(7n+5) { border-top-color: var(--gb-blue)    !important; }
+.service-slider .slick-slide:nth-child(7n+6) .serviceBox,
+.service-slider .serviceBox:nth-child(7n+6) { border-top-color: var(--gb-magenta) !important; }
+.service-slider .slick-slide:nth-child(7n+7) .serviceBox,
+.service-slider .serviceBox:nth-child(7n+7) { border-top-color: var(--gb-green)   !important; }
+
+/* Service card icon — tinted circle bg matching the border colour */
+.serviceBox img {
+  background: var(--gb-blue-light);
+  border-radius: 0.75rem;
+  padding: 10px;
+  width: 72px !important;
+  height: 72px;
+  object-fit: contain;
+}
+
+/* Hover glow matches the top border colour — use blue as default */
+.serviceBox:hover {
+  box-shadow: 0 8px 32px rgba(48,157,218,0.18) !important;
+}
+
+/* Section background — alternating stripe */
+.servicePanel {
+  background: var(--bg-secondary) !important;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg,
+    var(--gb-blue) 0%,
+    var(--gb-magenta) 33%,
+    var(--gb-yellow) 66%,
+    var(--gb-green) 100%) 1;
+}
+
+
+/* ----------------------------------------------------------------
+ * INDUSTRIES — Coloured left accent per slide + tab colours
+ * ---------------------------------------------------------------- */
+.cSlidersingle .cSlider__item {
+  border-left: 4px solid var(--gb-blue);
+  transition: border-color 0.3s ease;
+}
+
+/* Industry tab pills — coloured per position */
+.cSlidernav .slick-track .cSlider__item:nth-child(1).is-active { background: var(--gb-blue)    !important; }
+.cSlidernav .slick-track .cSlider__item:nth-child(2).is-active { background: var(--gb-magenta) !important; }
+.cSlidernav .slick-track .cSlider__item:nth-child(3).is-active { background: var(--gb-green)   !important; }
+.cSlidernav .slick-track .cSlider__item:nth-child(4).is-active { background: var(--gb-yellow); color: var(--gb-charcoal) !important; -webkit-text-fill-color: var(--gb-charcoal) !important; }
+.cSlidernav .slick-track .cSlider__item:nth-child(5).is-active { background: var(--gb-blue)    !important; }
+
+/* Industry slide left border cycles with the industry */
+.cSlidersingle .slick-current .cSlider__item,
+.cSlidersingle .slick-slide:nth-child(1) .cSlider__item { border-left-color: var(--gb-blue);    }
+.cSlidersingle .slick-slide:nth-child(2) .cSlider__item { border-left-color: var(--gb-magenta); }
+.cSlidersingle .slick-slide:nth-child(3) .cSlider__item { border-left-color: var(--gb-green);   }
+.cSlidersingle .slick-slide:nth-child(4) .cSlider__item { border-left-color: var(--gb-yellow);  }
+.cSlidersingle .slick-slide:nth-child(5) .cSlider__item { border-left-color: var(--gb-blue);    }
+
+/* Industry section heading accent */
+.productPanel h2 {
+  display: inline-block;
+  position: relative;
+}
+
+.productPanel h2::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 60px;
+  background: linear-gradient(90deg, var(--gb-blue), var(--gb-magenta));
+  border-radius: 2px;
+  margin: 0.4rem auto 0;
+}
+
+
+/* ----------------------------------------------------------------
+ * TESTIMONIAL CARDS — Each card tinted with a brand colour
+ * ---------------------------------------------------------------- */
+
+/* Card 1 — Blue tint (featured) */
+.testi-cards-grid .testi-card:nth-child(1) {
+  border-top: 3px solid var(--gb-blue) !important;
+  background: var(--gb-blue-light) !important;
+}
+
+/* Card 2 — Magenta tint */
+.testi-cards-grid .testi-card:nth-child(2) {
+  border-top: 3px solid var(--gb-magenta) !important;
+  background: var(--gb-magenta-light) !important;
+}
+
+/* Card 3 — Green tint */
+.testi-cards-grid .testi-card:nth-child(3) {
+  border-top: 3px solid var(--gb-green) !important;
+  background: var(--gb-green-light) !important;
+}
+
+/* Card 4 — Yellow tint */
+.testi-cards-grid .testi-card:nth-child(4) {
+  border-top: 3px solid var(--gb-yellow) !important;
+  background: var(--gb-yellow-light) !important;
+}
+
+/* Card 5 — Blue tint (cycle) */
+.testi-cards-grid .testi-card:nth-child(5) {
+  border-top: 3px solid var(--gb-blue) !important;
+  background: var(--gb-blue-light) !important;
+}
+
+/* Card 6 — Magenta tint */
+.testi-cards-grid .testi-card:nth-child(6) {
+  border-top: 3px solid var(--gb-magenta) !important;
+  background: var(--gb-magenta-light) !important;
+}
+
+/* Quote marks — match the card's border colour */
+.testi-cards-grid .testi-card:nth-child(1) .testi-card-quote::before,
+.testi-cards-grid .testi-card:nth-child(5) .testi-card-quote::before { color: var(--gb-blue)    !important; -webkit-text-fill-color: var(--gb-blue)    !important; }
+.testi-cards-grid .testi-card:nth-child(2) .testi-card-quote::before,
+.testi-cards-grid .testi-card:nth-child(6) .testi-card-quote::before { color: var(--gb-magenta) !important; -webkit-text-fill-color: var(--gb-magenta) !important; }
+.testi-cards-grid .testi-card:nth-child(3) .testi-card-quote::before { color: var(--gb-green)   !important; -webkit-text-fill-color: var(--gb-green)   !important; }
+.testi-cards-grid .testi-card:nth-child(4) .testi-card-quote::before { color: var(--gb-yellow)  !important; -webkit-text-fill-color: var(--gb-yellow)  !important; }
+
+/* Reset overrides from previous layer that set all cards to plain white */
+.testi-card { background: #fff; }
+
+/* Stars on tinted cards — slightly larger */
+.testi-card-stars i { font-size: 0.85rem !important; }
+
+/* Text stays charcoal on all tinted bg cards */
+.testi-cards-grid .testi-card .testi-card-quote {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+}
+
+.testi-cards-grid .testi-card .testi-card-info h6 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+}
+
+/* Section background alternates — clientPanel gets blue-to-white diagonal */
+.clientPanel2 {
+  background: linear-gradient(165deg,
+    var(--gb-blue-light) 0%,
+    #fff 40%,
+    var(--gb-magenta-light) 70%,
+    var(--gb-green-light) 100%) !important;
+}
+
+/* Remove old ::before/::after dark orbs */
+.clientPanel2::before,
+.clientPanel2::after { display: none !important; }
+
+/* Testi header on now-light background */
+.testi-header h3 {
+  color: var(--gb-charcoal) !important;
+}
+.testi-header p {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+}
+.testi-overall-rating span {
+  color: var(--text-secondary) !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * ABOUT SECTION — alternating colour accents on counter stats
+ * ---------------------------------------------------------------- */
+.counterBg {
+  background: linear-gradient(160deg,
+    var(--gb-blue) 0%,
+    #1472aa 50%,
+    #0f5a90 100%) !important;
+  background-image: none !important;
+}
+
+/* Yellow number accent stays */
+.counterBg .itemList .counting {
+  color: var(--gb-yellow) !important;
+  -webkit-text-fill-color: var(--gb-yellow) !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * SECTION CHIPS — Colour variation by context
+ * ---------------------------------------------------------------- */
+/* About section chip — blue */
+.aboutPanel .section-chip {
+  background: var(--gb-blue-light) !important;
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  border-color: rgba(48,157,218,0.3) !important;
+}
+
+/* Services section chip — magenta */
+.servicePanel .section-chip {
+  display: inline-block !important;
+  background: var(--gb-magenta-light) !important;
+  color: var(--gb-magenta) !important;
+  -webkit-text-fill-color: var(--gb-magenta) !important;
+  border-color: rgba(213,0,105,0.3) !important;
+  margin-bottom: 0.5rem;
+}
+
+/* Industries section chip — green */
+.productPanel .section-chip {
+  background: var(--gb-green-light) !important;
+  color: var(--gb-green) !important;
+  -webkit-text-fill-color: var(--gb-green) !important;
+  border-color: rgba(31,151,73,0.3) !important;
+}
+
+/* Reviews section chip — yellow */
+.clientPanel2 .testi-badge {
+  background: var(--gb-yellow-light) !important;
+  color: #8a6300 !important;
+  -webkit-text-fill-color: #8a6300 !important;
+  border-color: rgba(244,183,43,0.4) !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * SECTION ALTERNATING BACKGROUNDS
+ * Pattern: white → light-blue → white → light-green → white
+ * ---------------------------------------------------------------- */
+.aboutPanel   { background: #fff !important; }
+.servicePanel { background: var(--bg-secondary) !important; }
+.productPanel { background: #fff !important; }
+.clientPanel2 {
+  /* keeps the diagonal gradient from above */
+}
+.sectionGap   { background: var(--bg-secondary) !important; }
+
+/* Support/CTA stays dark charcoal */
+.sectionGap .supportHelp {
+  background: linear-gradient(135deg,
+    var(--gb-charcoal) 0%, #1e2328 100%) !important;
+}
+
+/* Blue dot decoration strips between key sections */
+.aboutPanel::before {
+  background: radial-gradient(ellipse at top right,
+    rgba(48,157,218,0.10) 0%, transparent 65%) !important;
+  display: block !important;
+}
+
+.servicePanel::before { display: none !important; }
+
+.servicePanel::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--gb-blue) 0%,
+    var(--gb-magenta) 33%,
+    var(--gb-yellow) 66%,
+    var(--gb-green) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.productPanel::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg,
+    var(--gb-green) 0%,
+    var(--gb-blue) 50%,
+    var(--gb-green) 100%) !important;
+  border-radius: 0 !important;
+  pointer-events: none;
+}
+
+.clientPanel2 {
+  position: relative;
+}
+
+.clientPanel2::before {
+  display: block !important;
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--gb-magenta) 0%,
+    var(--gb-yellow) 50%,
+    var(--gb-magenta) 100%) !important;
+  width: 100% !important; height: 3px !important;
+  transform: none !important; border-radius: 0 !important;
+  z-index: 2;
+}
+
+.clientPanel2::after {
+  display: none !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * FOOTER — Coloured section heading underlines
+ * ---------------------------------------------------------------- */
+footer .foot-links h4::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 28px;
+  border-radius: 1px;
+  margin-top: 6px;
+}
+
+footer .foot-links > div:nth-child(1) h4::after { background: var(--gb-blue); }
+footer .foot-links > div:nth-child(2) h4::after { background: var(--gb-magenta); }
+footer .foot-links > div:nth-child(3) h4::after { background: var(--gb-green); }
+footer .foot-links > div:nth-child(4) h4::after { background: var(--gb-yellow); }
+
+/* Footer divider — brand rainbow */
+footer hr {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--gb-blue) 25%,
+    var(--gb-magenta) 50%,
+    var(--gb-green) 75%,
+    transparent 100%) !important;
+  height: 1px !important;
+  border: none !important;
+  opacity: 0.4 !important;
+}
+
+/* Address block border — blue left accent */
+.address-block {
+  border-left: 3px solid var(--gb-blue) !important;
+  border-top: 1px solid var(--border-color) !important;
+  border-right: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  background: rgba(48,157,218,0.04) !important;
+}
+
+footer .address-block:last-child {
+  border-left-color: var(--gb-green) !important;
+  background: rgba(31,151,73,0.04) !important;
+}
+
+footer .address-block h6 {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+footer .address-block:last-child h6 {
+  color: var(--gb-green) !important;
+  -webkit-text-fill-color: var(--gb-green) !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * LOGO SLIDER strip — coloured top + bottom borders
+ * ---------------------------------------------------------------- */
+.logoPanel {
+  border-top: 2px solid var(--gb-blue) !important;
+  border-bottom: 2px solid var(--gb-blue) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: 0 2px 16px rgba(48,157,218,0.07) !important;
+}
+
+.logoPanel h4 {
+  color: var(--gb-charcoal) !important;
+}
+
+.logoPanel p {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  font-weight: 600;
+}
+
+
+/* ----------------------------------------------------------------
+ * INLINE ICON COLOUR HELPERS (ri- icons in body text)
+ * ---------------------------------------------------------------- */
+.ri-map-pin-2-fill   { color: var(--gb-magenta) !important; -webkit-text-fill-color: var(--gb-magenta) !important; background-image: none !important; }
+.ri-map-pin-line     { color: var(--gb-blue)    !important; -webkit-text-fill-color: var(--gb-blue)    !important; background-image: none !important; }
+.ri-phone-line       { color: var(--gb-green)   !important; -webkit-text-fill-color: var(--gb-green)   !important; background-image: none !important; }
+.ri-mail-line        { color: var(--gb-blue)    !important; -webkit-text-fill-color: var(--gb-blue)    !important; background-image: none !important; }
+.ri-double-quotes-l  { color: var(--gb-blue)    !important; -webkit-text-fill-color: var(--gb-blue)    !important; background-image: none !important; }
+.ri-arrow-right-long-line,
+.ri-arrow-right-line { color: inherit; }
+
+
+/* ----------------------------------------------------------------
+ * WHYUS PANEL — coloured bullet + heading
+ * ---------------------------------------------------------------- */
+.whyUsPanel h2 {
+  border-left: 4px solid var(--gb-blue);
+  padding-left: 1rem;
+}
+
+.whyUsPanel ul li::before {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+
+/* ----------------------------------------------------------------
+ * CTA / SUPPORT HELP — Yellow accent badge
+ * ---------------------------------------------------------------- */
+.supportHelp h2 {
+  position: relative;
+  display: inline-block;
+}
+
+.supportHelp h2::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 48px;
+  background: var(--gb-yellow);
+  border-radius: 2px;
+  margin-top: 0.4rem;
+}
+
+
+/* ----------------------------------------------------------------
+ * BTNPRO2 arrow circle — colour cycles per context
+ * ---------------------------------------------------------------- */
+/* Primary sections — blue circle */
+.aboutPanel .btnPro2 span,
+.servicePanel .btnPro2 span,
+.productPanel .btnPro2 span { background: var(--gb-blue) !important; }
+
+/* CTA section — yellow circle */
+.supportHelp .btnPro2 span { background: var(--gb-yellow) !important; }
+.supportHelp .btnPro2:hover { color: var(--gb-yellow) !important; -webkit-text-fill-color: var(--gb-yellow) !important; }
+
+/* Light sections fallback */
+.sectionGap .btnPro2 span { background: var(--gb-blue) !important; }
+
+
+/* ----------------------------------------------------------------
+ * SCROLL-REVEAL ANIMATION — Stagger tint on cards
+ * ---------------------------------------------------------------- */
+.reveal { transition-timing-function: cubic-bezier(0.22,0.61,0.36,1); }
+
+
+/* ----------------------------------------------------------------
+ * INNER PAGE SERVICE CARDS — same colour top-border pattern
+ * ---------------------------------------------------------------- */
+/* Applied to all pages that render service-box grids */
+.sectionGap .col-sm-6:nth-child(4n+1) .rcs-feature-card { border-top: 3px solid var(--gb-blue)    !important; }
+.sectionGap .col-sm-6:nth-child(4n+2) .rcs-feature-card { border-top: 3px solid var(--gb-magenta) !important; }
+.sectionGap .col-sm-6:nth-child(4n+3) .rcs-feature-card { border-top: 3px solid var(--gb-green)   !important; }
+.sectionGap .col-sm-6:nth-child(4n+4) .rcs-feature-card { border-top: 3px solid var(--gb-yellow)  !important; }
+
+/* RCS use cards — coloured left border cycling */
+.sectionGap .col-sm-6:nth-child(3n+1) .rcs-use-card { border-left-color: var(--gb-blue)    !important; }
+.sectionGap .col-sm-6:nth-child(3n+2) .rcs-use-card { border-left-color: var(--gb-magenta) !important; }
+.sectionGap .col-sm-6:nth-child(3n+3) .rcs-use-card { border-left-color: var(--gb-green)   !important; }
+
+/* RCS icon wrap — colour cycling */
+.sectionGap .col-sm-6:nth-child(4n+1) .rcs-feature-card .icon-wrap { background: linear-gradient(135deg, var(--gb-blue),    #1a7fb8) !important; }
+.sectionGap .col-sm-6:nth-child(4n+2) .rcs-feature-card .icon-wrap { background: linear-gradient(135deg, var(--gb-magenta), #b5005a) !important; }
+.sectionGap .col-sm-6:nth-child(4n+3) .rcs-feature-card .icon-wrap { background: linear-gradient(135deg, var(--gb-green),   #157a3a) !important; }
+.sectionGap .col-sm-6:nth-child(4n+4) .rcs-feature-card .icon-wrap { background: linear-gradient(135deg, var(--gb-yellow),  #c9920a) !important; }
+
+
+/* ----------------------------------------------------------------
+ * GLOBAL SECTION DIVIDER RAINBOW BAR
+ * Applied as a subtle 3px top rule on alternating key sections
+ * ---------------------------------------------------------------- */
+.sectionGap {
+  position: relative;
+}
+
+
+/* ================================================================
+ *  WHITE-ON-WHITE FIX
+ *  Ensures no button or link text is invisible against
+ *  white or light-tinted section backgrounds.
+ * ================================================================ */
+
+/* -- btnPro2 "Learn More" / "Read More" on light sections --
+   Charcoal text, blue arrow circle, hover stays readable. */
+.productPanel .btnPro2,
+.aboutPanel .btnPro2,
+.servicePanel .btnPro2,
+.sectionGap .btnPro2,
+.cSlidersingle .btnPro2 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  background-image: none !important;
+}
+
+.productPanel .btnPro2:hover,
+.aboutPanel .btnPro2:hover,
+.servicePanel .btnPro2:hover,
+.sectionGap .btnPro2:hover,
+.cSlidersingle .btnPro2:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  padding-left: 0 !important; /* remove the old slide-left padding */
+}
+
+/* Keep the arrow circle always visible */
+.productPanel .btnPro2 span,
+.aboutPanel .btnPro2 span,
+.servicePanel .btnPro2 span,
+.sectionGap .btnPro2 span,
+.cSlidersingle .btnPro2 span {
+  background: var(--gb-blue) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* -- Global btnPro2 hover — charcoal on light, white on dark -- */
+/* Light section default hover */
+.btnPro2:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  padding-left: 0 !important;
+}
+
+.btnPro2:hover span {
+  background: #1a7fb8 !important;
+  transform: translateX(3px);
+}
+
+/* Dark section exception — CTA / banner */
+.supportHelp .btnPro2:hover,
+.bannerContent-38 .btnPro2:hover,
+.videoBanner-37 .btnPro2:hover,
+.hero-bg .btnPro2:hover,
+.whatsappApiHeader .btnPro2:hover {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* -- btnPro "Learn More" on white about section -- */
+.aboutPanel .btnPro,
+.sectionGap .btnPro {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background: var(--gb-blue) !important;
+  border-color: var(--gb-blue) !important;
+}
+
+/* -- Industries slider cSlidersingle Learn More button -- */
+.cSlidersingle .cSlider__item a.btnPro2 {
+  color: var(--gb-charcoal) !important;
+  -webkit-text-fill-color: var(--gb-charcoal) !important;
+  font-weight: 600;
+}
+
+.cSlidersingle .cSlider__item a.btnPro2:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* -- Service card Read More links -- already fixed but reinforce -- */
+.serviceBox a {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+  background-image: none !important;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.serviceBox a:hover {
+  color: #1a7fb8 !important;
+  -webkit-text-fill-color: #1a7fb8 !important;
+}
+
+/* -- Footer nav links — keep readable -- */
+footer ul a,
+footer .mb-3 a {
+  color: #a8b2bc !important;
+  -webkit-text-fill-color: #a8b2bc !important;
+  background-image: none !important;
+}
+
+footer ul a:hover,
+footer .mb-3 a:hover {
+  color: var(--gb-blue) !important;
+  -webkit-text-fill-color: var(--gb-blue) !important;
+}
+
+/* -- btnPro ::before hover sweep — disable on light bg to avoid white flash -- */
+.productPanel .btnPro2::before,
+.aboutPanel .btnPro2::before,
+.servicePanel .btnPro2::before,
+.sectionGap .btnPro2::before,
+.cSlidersingle .btnPro2::before {
+  display: none !important;
+}

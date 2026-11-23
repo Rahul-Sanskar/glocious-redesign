@@ -31,6 +31,7 @@
 
     
 <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="assets/css/brand.css">
 <link rel="stylesheet" href="assets/css/remixicon.css">
 <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
 <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
@@ -247,23 +248,26 @@
     </script>  
     
     <style>
+        /* Nav links white over hero video */
         .nav-links{
             color: #fff;
             -webkit-text-fill-color: #fff;
             background-image: none;
         }
+        /* Logo slider edge fade matches the logoPanel background (white) */
         .logo-slider .slick-list:before{
-            background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0) 100%);
         }
         .logo-slider .slick-list:after{
-            background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
-        }        .choices__input{
+            background: linear-gradient(270deg, #fff 0%, rgba(255,255,255,0) 100%);
+        }
+        .choices__input{
             background-color: transparent !important;
             color: #fff !important;
             margin: 0;
         }
         @media (max-width: 991px) {
-            .nav-toggle { color: #fff; border: 1px solid #fff;}
+            .nav-toggle { color: #fff; border: 1px solid rgba(255,255,255,0.6); border-radius: 6px; }
         }
         @media (max-width: 480px) {
             .dwp-solution-list ul li .solution-block .sb-content {
@@ -278,7 +282,7 @@
 
 <body>
 
-    <section class="topHeader text-center"><div class="container"><div class="row"><div class="col-12 fs-18">Talk to our experts for Bulk SMS, RCS, Voice, IVR, WhatsApp, Email &amp; Digital Marketing solutions. <a href="contact/index.html" class="fw-bold">Get in touch</a><i class="ri-close-fill fs-24 lh-1 position-absolute ms-4"></i></div></div></div></section>
+    
 
     <section class="position-relative videoBanner-37">
         <nav class="navbar navigation">
@@ -346,7 +350,7 @@
                         <h1>We Provide Bulk SMS, RCS &amp; Digital Marketing Solutions</h1>
                         <h3>Glocious Infotech is a leading and award-winning Bulk SMS, RCS Messaging and Digital Marketing company offering affordable, high-quality and secure solutions for businesses across India.</h3>
                         <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
-                            <a href="https://glocious.com/final-pdf1.pdf" target="_blank" class="btnPro">Download Brochure</a>
+                            <a href="https://glocious.com/final-pdf1.pdf" target="_blank" class="btn-secondary-brand">Download Brochure</a>
                             <a href="contact/index.html" class="btnPro2 ms-4">Request a Demo <span><i class="ri-arrow-right-line"></i></span></a>
                         </div>
                     </div>
@@ -415,9 +419,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-xl-8">
-                    <span class="section-chip" style="-webkit-text-fill-color:#fff;border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);">Our Services</span>
-                    <h2 class="fw-bold reveal" style="color:#fff;">Our Services</h2>
-                    <p style="color:rgba(255,255,255,0.7);">Comprehensive communication &amp; marketing solutions for businesses across India.</p>
+                    <span class="section-chip">Our Services</span>
+                    <h2 class="fw-bold reveal">Our Services</h2>
+                    <p>Comprehensive communication &amp; marketing solutions for businesses across India.</p>
                 </div>
                 <div class="col-12">
                     <div class="service-slider">

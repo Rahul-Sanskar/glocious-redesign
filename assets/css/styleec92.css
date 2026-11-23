@@ -1,20 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;display=swap');
+/* DM Sans kept as fallback body font; Poppins + Inter loaded via brand.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
+/*
+ * :root is defined in brand.css (loads first).
+ * This block re-declares only the legacy aliases so older
+ * component rules that reference var(--primary) etc. still resolve
+ * correctly to the new Glocious brand colours.
+ */
 :root {
-    --primary: #0D1B2A;
-    --pink: #E30086;
-    --secondary: #DE003E;
-    --light-gray: #f7f3eb;
-    --dark-gray: #333333;
-    --white: #ffffff;
-    --black: #101010;
-    /* ---------------------------- */
-    --royal-blue: #0D1B2A;
-    --soft-magenta: #E30086;
-    --slate-gray: #303840;
-    --bright-pink: #E30086;
-    --navy-blue: #0D1B2A;
-    --sky-blue: #0D1B2A;
+    /* --- NEW BRAND TOKENS (canonical) --- */
+    --gb-blue:        #309DDA;
+    --gb-yellow:      #F4B72B;
+    --gb-magenta:     #D50069;
+    --gb-green:       #1F9749;
+    --gb-charcoal:    #373A3E;
+    --gb-white:       #FFFFFF;
+    --gb-blue-light:  #E7F4FC;
+    --gb-yellow-light:#FFF8E1;
+    --gb-magenta-light:#FDEBF4;
+    --gb-green-light: #E8F7ED;
+    --bg-primary:     #FFFFFF;
+    --bg-secondary:   #F5F8FB;
+    --text-primary:   #373A3E;
+    --text-secondary: #66717D;
+    --border-color:   #E2E8F0;
+    --font-heading:   'Poppins','DM Sans',sans-serif;
+    --font-body:      'Inter','DM Sans',sans-serif;
+
+    /* --- LEGACY ALIASES (component rules use these) --- */
+    --primary:      #309DDA;
+    --pink:         #D50069;
+    --secondary:    #309DDA;
+    --light-gray:   #F5F8FB;
+    --dark-gray:    #373A3E;
+    --white:        #FFFFFF;
+    --black:        #101010;
+    --royal-blue:   #309DDA;
+    --soft-magenta: #D50069;
+    --slate-gray:   #373A3E;
+    --bright-pink:  #D50069;
+    --navy-blue:    #373A3E;
+    --sky-blue:     #309DDA;
     --mask-opacity: 0.5;
 }
 
@@ -134,7 +160,7 @@ b, strong {
     transition: all 250ms
 }
 
-.btnPro2:hover {
+.bannerContent-38 .btnPro2:hover {
     color: var(--white);
     /* margin-left: 15px; */
     padding-left: 15px;
